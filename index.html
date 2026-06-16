@@ -158,6 +158,37 @@
     .etapa-card h3 { font-size: 17px; font-weight: 800; color: var(--navy); }
     .etapa-card p { font-size: 13px; color: var(--gray-mid); line-height: 1.6; flex-grow: 1; }
 
+    /* PRAZO BANNER */
+    .prazo-banner {
+      background: #fff8e1;
+      border: 2px solid #f9a825;
+      border-radius: 12px;
+      padding: 22px 28px;
+      margin-bottom: 40px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .prazo-icon {
+      font-size: 28px; flex-shrink: 0; margin-top: 2px;
+    }
+    .prazo-content h4 {
+      font-size: 14px; font-weight: 900;
+      color: #e65100; text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 8px;
+    }
+    .prazo-content p {
+      font-size: 13px; color: #5d4037; line-height: 1.7;
+    }
+    .prazo-content strong { color: #bf360c; font-weight: 800; }
+    .prazo-destaque {
+      display: inline-block;
+      background: #e65100; color: white;
+      font-size: 13px; font-weight: 800;
+      padding: 4px 12px; border-radius: 4px;
+      margin: 10px 0 0;
+    }
+
     .etapa-cta {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--navy);
@@ -290,6 +321,22 @@
 
 <!-- MAIN -->
 <main>
+
+  <!-- PRAZO IMPORTANTE -->
+  <div class="prazo-banner">
+    <div class="prazo-icon">📅</div>
+    <div class="prazo-content">
+      <h4>⚠️ Prazo importante para conciliação</h4>
+      <p>
+        Integrações concluídas <strong>até o dia 20 do mês</strong> serão conciliadas ainda neste mês.
+        Após essa data, a conciliação ocorrerá apenas <strong>no mês seguinte</strong>.
+      </p>
+      <p style="margin-top:8px; color:#5d4037;">
+        Lembre-se: todo esse processo depende de você, seller. Quanto mais rápido você concluir as etapas, mais cedo sua operação será conciliada!
+      </p>
+      <div class="prazo-destaque">🗓 Conclua antes do dia 20 para conciliar neste mês</div>
+    </div>
+  </div>
 
   <p class="section-label">Por onde começar</p>
 
