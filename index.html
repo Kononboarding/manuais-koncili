@@ -1,320 +1,382 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal do Seller — Koncili</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Onboarding de Sellers — Koncili</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --green: #186614;
-  --green-mid: #349930;
-  --green-light: #74e635;
-  --green-bg: #e8f5e9;
-  --dark: #153137;
-  --gray-dark: #333333;
-  --gray-mid: #4F4F4F;
-  --gray-light: #F2F2F2;
-  --white: #ffffff;
-  --shadow: 0 4px 20px rgba(24,102,20,0.10);
-  --radius: 14px;
-}
-body { font-family: 'Poppins', sans-serif; background: var(--gray-light); color: var(--gray-dark); min-height: 100vh; }
-header {
-  background: var(--green); padding: 0 32px;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 64px; position: sticky; top: 0; z-index: 100;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
-}
-.logo { font-size: 20px; font-weight: 800; color: var(--white); letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px; text-decoration: none; }
-.logo span { color: var(--green-light); }
-.header-tag { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.75); text-transform: uppercase; letter-spacing: 1px; }
-footer { text-align: center; padding: 24px; font-size: 11px; color: var(--gray-mid); border-top: 1px solid #e0e0e0; }
-@media (max-width: 540px) { header { padding: 0 16px; } }
+    :root {
+      --green: #3aaa35;
+      --green-light: #74e635;
+      --navy: #153137;
+      --black: #000000;
+      --gray-dark: #3c3c3b;
+      --gray-mid: #787878;
+      --teal: #00b1b1;
+      --white: #ffffff;
+      --bg: #f5f5f5;
+    }
 
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--white);
+      color: var(--gray-dark);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-/* HERO */
-.hero {
-  background: linear-gradient(135deg, var(--green) 0%, var(--dark) 100%);
-  padding: 64px 32px 56px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: ''; position: absolute; top: -60px; right: -60px;
-  width: 280px; height: 280px; border-radius: 50%;
-  background: rgba(116,230,53,0.08); pointer-events: none;
-}
-.hero::after {
-  content: ''; position: absolute; bottom: -80px; left: -40px;
-  width: 220px; height: 220px; border-radius: 50%;
-  background: rgba(255,255,255,0.04); pointer-events: none;
-}
-.hero h1 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 12px; }
-.hero h1 em { font-style: normal; color: var(--green-light); }
-.hero p { font-size: 15px; color: rgba(255,255,255,0.78); max-width: 480px; margin: 0 auto 48px; }
+    /* ── HEADER ── */
+    header {
+      background: var(--white);
+      border-bottom: 3px solid var(--green);
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
 
-/* STEP CARDS (etapa 1 e 2) */
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  max-width: 820px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-.step-card {
-  background: var(--white); border-radius: var(--radius); padding: 32px 28px;
-  text-align: left; box-shadow: var(--shadow);
-  display: flex; flex-direction: column; gap: 14px;
-  border: 1.5px solid transparent;
-  transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
-  text-decoration: none; position: relative; overflow: hidden;
-}
-.step-card:hover { transform: translateY(-5px); border-color: var(--green-mid); box-shadow: 0 10px 36px rgba(24,102,20,0.18); }
-.step-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--green); }
-.step-card.step2::before { background: var(--dark); }
-.step-badge {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--green); color: var(--white); font-size: 18px; font-weight: 800;
-}
-.step-card.step2 .step-badge { background: var(--dark); }
-.step-card h2 { font-size: 17px; font-weight: 700; color: var(--gray-dark); line-height: 1.3; }
-.step-card p { font-size: 13px; color: var(--gray-mid); line-height: 1.6; flex: 1; }
-.step-btn {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  background: var(--green); color: var(--white); border-radius: 8px; padding: 12px 16px;
-  font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
-  transition: background 0.18s; margin-top: 4px;
-}
-.step-card.step2 .step-btn { background: var(--dark); }
-.step-card:hover .step-btn { background: var(--dark); }
-.step-card.step2:hover .step-btn { background: var(--green); }
+    .logo {
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+    .logo svg { height: 32px; }
 
-/* MAIN */
-main { max-width: 860px; margin: 0 auto; padding: 48px 24px 60px; display: flex; flex-direction: column; gap: 40px; }
+    header nav {
+      font-size: 12px; font-weight: 700;
+      color: var(--gray-mid);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
 
-/* ONBOARDING TIMELINE */
-.timeline-section { display: flex; flex-direction: column; gap: 16px; }
-.section-label {
-  font-size: 11px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 1.2px; color: var(--green);
-  display: flex; align-items: center; gap: 8px;
-}
-.section-label::after { content: ''; flex: 1; height: 1px; background: var(--green-bg); }
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+      padding: 72px 48px 64px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
 
-.timeline {
-  display: flex; flex-direction: column; gap: 0;
-  background: var(--white); border-radius: var(--radius);
-  box-shadow: var(--shadow); overflow: hidden;
-}
-.timeline-item {
-  display: flex; align-items: stretch; gap: 0;
-  border-bottom: 1px solid var(--green-bg);
-  transition: background 0.15s;
-}
-.timeline-item:last-child { border-bottom: none; }
-.timeline-item:hover { background: #fafff9; }
-.timeline-left {
-  display: flex; flex-direction: column; align-items: center;
-  padding: 20px 16px; min-width: 64px; position: relative;
-}
-.timeline-num {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: var(--green); color: var(--white);
-  font-size: 14px; font-weight: 800;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; position: relative; z-index: 1;
-}
-.timeline-item.nps .timeline-num {
-  background: var(--dark); font-size: 10px; font-weight: 800; letter-spacing: 0.5px;
-}
-.timeline-line {
-  width: 2px; flex: 1; background: var(--green-bg); margin-top: 6px;
-}
-.timeline-item:last-child .timeline-line { display: none; }
-.timeline-right {
-  padding: 20px 20px 20px 4px; flex: 1;
-  display: flex; flex-direction: column; gap: 4px; justify-content: center;
-}
-.timeline-right h3 { font-size: 14px; font-weight: 700; color: var(--gray-dark); }
-.timeline-right p { font-size: 12px; color: var(--gray-mid); line-height: 1.5; }
-.timeline-tag {
-  display: inline-flex; align-items: center; gap: 4px;
-  background: var(--green-bg); color: var(--green);
-  border-radius: 20px; padding: 3px 10px;
-  font-size: 10px; font-weight: 600; width: fit-content; margin-top: 4px;
-}
-.timeline-item.active .timeline-num { background: var(--green-mid); box-shadow: 0 0 0 4px rgba(52,153,48,0.15); }
-.timeline-item.active .timeline-right h3 { color: var(--green); }
+    /* decorative shapes */
+    .hero::before {
+      content: '';
+      position: absolute;
+      right: -80px; top: -80px;
+      width: 320px; height: 320px;
+      border: 40px solid rgba(58,170,53,0.15);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: 80px; bottom: -60px;
+      width: 180px; height: 180px;
+      border: 30px solid rgba(116,230,53,0.1);
+      border-radius: 50%;
+    }
 
-/* INFO BOX */
-.info-box {
-  background: var(--white); border-radius: var(--radius); padding: 20px 24px;
-  border-left: 4px solid var(--green); box-shadow: var(--shadow);
-  display: flex; align-items: flex-start; gap: 14px;
-}
-.info-box-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
-.info-box-text h3 { font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 4px; }
-.info-box-text p { font-size: 12px; color: var(--gray-mid); line-height: 1.6; }
+    .hero-text { max-width: 600px; position: relative; z-index: 2; }
+    .hero-badge {
+      display: inline-block;
+      background: var(--green);
+      color: white;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 42px; font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--green-light); }
+    .hero p {
+      font-size: 15px; color: rgba(255,255,255,0.75);
+      line-height: 1.7; max-width: 480px;
+    }
 
-@media (max-width: 540px) {
-  .steps-grid { padding: 0 16px; gap: 16px; }
-  main { padding: 28px 16px 48px; gap: 28px; }
-  .timeline-left { min-width: 52px; padding: 16px 10px; }
-}
+    /* ── MAIN ── */
+    main { max-width: 1000px; margin: 0 auto; padding: 64px 32px 100px; }
 
-/* WHATSAPP BUTTON */
-.wa-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: #25D366; color: var(--white);
-  border-radius: 8px; padding: 10px 18px;
-  font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
-  text-decoration: none; margin-top: 12px;
-  transition: background 0.18s; width: fit-content;
-}
-.wa-btn:hover { background: #1ebe5c; }
+    /* ── ETAPA CARDS ── */
+    .section-label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gray-mid);
+      margin-bottom: 24px;
+    }
 
-/* WHATSAPP FLOATING BUTTON */
-.wa-float {
-  position: fixed; bottom: 28px; right: 28px; z-index: 999;
-  display: flex; align-items: center; gap: 10px;
-  background: #25D366; color: var(--white);
-  border-radius: 50px; padding: 14px 20px;
-  font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
-  text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-  transition: transform 0.18s, box-shadow 0.18s;
-}
-.wa-float:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(37,211,102,0.5); }
-.wa-float svg { flex-shrink: 0; }
-</style>
+    .etapas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 72px;
+    }
+    @media (max-width: 640px) { .etapas-grid { grid-template-columns: 1fr; } }
+
+    .etapa-card {
+      background: var(--white);
+      border: 2px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 32px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+      display: flex; flex-direction: column; gap: 14px;
+      position: relative; overflow: hidden;
+    }
+    .etapa-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--green);
+      border-radius: 12px 0 0 12px;
+    }
+    .etapa-card:hover {
+      border-color: var(--green);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(58,170,53,0.12);
+    }
+
+    .etapa-num {
+      width: 36px; height: 36px;
+      background: var(--green);
+      color: white;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 900;
+    }
+    .etapa-card h3 { font-size: 17px; font-weight: 800; color: var(--navy); }
+    .etapa-card p { font-size: 13px; color: var(--gray-mid); line-height: 1.6; flex-grow: 1; }
+
+    .etapa-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--navy);
+      color: white;
+      padding: 11px 20px; border-radius: 6px;
+      font-size: 13px; font-weight: 700;
+      margin-top: 4px;
+      transition: background 0.2s;
+      width: fit-content;
+    }
+    .etapa-card:hover .etapa-cta { background: var(--green); }
+
+    /* ── TIMELINE ── */
+    .timeline-wrap {
+      background: var(--bg);
+      border-radius: 16px;
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .timeline-wrap::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 6px;
+      background: linear-gradient(to bottom, var(--green), var(--green-light));
+      border-radius: 16px 0 0 16px;
+    }
+
+    .timeline-wrap h2 {
+      font-size: 22px; font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 32px;
+    }
+    .timeline-wrap h2 span { color: var(--green); }
+
+    .timeline { display: flex; flex-direction: column; gap: 16px; }
+
+    .tl-item {
+      background: white;
+      border-radius: 10px;
+      padding: 18px 22px;
+      display: flex; align-items: flex-start; gap: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .tl-num {
+      min-width: 32px; height: 32px;
+      background: var(--green);
+      color: white;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800;
+      flex-shrink: 0;
+    }
+    .tl-num.nps { background: var(--teal); font-size: 11px; }
+
+    .tl-info h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+    .tl-info p { font-size: 12px; color: var(--gray-mid); line-height: 1.5; }
+    .tl-tag {
+      display: inline-block;
+      background: #e8f7e8;
+      color: var(--green);
+      font-size: 11px; font-weight: 700;
+      padding: 2px 8px; border-radius: 4px;
+      margin-top: 6px;
+    }
+    .tl-tag.teal { background: #e0f7f7; color: var(--teal); }
+
+    /* ── HELP ── */
+    .help-bar {
+      margin-top: 48px;
+      background: var(--navy);
+      border-radius: 12px;
+      padding: 32px 40px;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
+      flex-wrap: wrap;
+    }
+    .help-bar h3 { font-size: 17px; font-weight: 800; color: white; margin-bottom: 4px; }
+    .help-bar p { font-size: 13px; color: rgba(255,255,255,0.65); }
+    .wa-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25d366; color: white;
+      padding: 13px 24px; border-radius: 8px;
+      text-decoration: none; font-size: 14px; font-weight: 700;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .wa-btn:hover { opacity: 0.9; }
+
+    /* ── FLOAT WHATSAPP ── */
+    .float-wa {
+      position: fixed; bottom: 28px; right: 28px;
+      background: #25d366; color: white;
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      transition: transform 0.2s; z-index: 999;
+    }
+    .float-wa:hover { transform: scale(1.1); }
+    .float-wa svg { width: 28px; height: 28px; fill: white; }
+  </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
-  <a class="logo" href="index.html">« <span>KONCILI</span></a>
-  <span class="header-tag">Portal do Seller</span>
+  <a href="#" class="logo">
+    <svg viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
+      <!-- double chevron << -->
+      <polygon points="0,20 10,8 14,12 6,20 14,28 10,32" fill="#3aaa35"/>
+      <polygon points="10,20 20,8 24,12 16,20 24,28 20,32" fill="#3aaa35"/>
+      <!-- KONCILI text -->
+      <text x="30" y="28" font-family="Montserrat,Arial,sans-serif" font-weight="800" font-size="22" fill="#3c3c3b" letter-spacing="2">KONCILI</text>
+    </svg>
+  </a>
+  <nav>Portal do Seller</nav>
 </header>
 
-<section class="hero">
-  <h1>Bem-vindo ao<br><em>Portal Koncili</em></h1>
-  <p>Siga as etapas abaixo para configurar sua conta e começar a conciliação dos seus marketplaces.</p>
-  <div class="steps-grid">
-    <a class="step-card" href="etapa1.html">
-      <div class="step-badge">1</div>
-      <h2>Criar acessos de usuário</h2>
-      <p>Crie os acessos para a equipe Koncili em cada canal que será operado, utilizando os e-mails e manuais disponibilizados.</p>
-      <div class="step-btn">
-        Acessar manuais
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </a>
-    <a class="step-card step2" href="etapa2.html">
-      <div class="step-badge">2</div>
-      <h2>Integrar contas no painel Koncili</h2>
-      <p>Integre as contas que serão operadas diretamente no painel da Koncili, utilizando o acesso fornecido pelo seu analista.</p>
-      <div class="step-btn">
-        Acessar integração
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </a>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">Onboarding de Sellers</div>
+    <h1>Bem-vindo à<br/><span>Koncili!</span></h1>
+    <p>Siga as etapas abaixo para configurar sua conta e começar a conciliação dos seus marketplaces.</p>
   </div>
-</section>
+</div>
 
+<!-- MAIN -->
 <main>
 
-  <!-- TIMELINE ONBOARDING -->
-  <div class="timeline-section">
-    <div class="section-label">Etapas do onboarding Koncili</div>
+  <p class="section-label">Por onde começar</p>
+
+  <div class="etapas-grid">
+    <a href="etapa1.html" class="etapa-card">
+      <div class="etapa-num">1</div>
+      <h3>Criar acessos de usuário</h3>
+      <p>Crie os acessos em cada marketplace que será operado, utilizando os e-mails e manuais disponibilizados pela equipe Koncili.</p>
+      <div class="etapa-cta">Acessar manuais →</div>
+    </a>
+    <a href="etapa2.html" class="etapa-card">
+      <div class="etapa-num">2</div>
+      <h3>Integrar no painel Koncili</h3>
+      <p>Integre as contas que serão operadas diretamente no painel da Koncili, utilizando o acesso fornecido pela equipe de implantação.</p>
+      <div class="etapa-cta">Acessar integração →</div>
+    </a>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline-wrap">
+    <h2>Etapas do <span>Onboarding Koncili</span></h2>
     <div class="timeline">
 
-      <div class="timeline-item active">
-        <div class="timeline-left">
-          <div class="timeline-num">1</div>
-          <div class="timeline-line"></div>
-        </div>
-        <div class="timeline-right">
-          <h3>Criação de usuários</h3>
-          <p>Criação dos acessos da equipe Koncili em cada canal de marketplace que será operado.</p>
-          <span class="timeline-tag">📋 Etapa atual</span>
+      <div class="tl-item">
+        <div class="tl-num">1</div>
+        <div class="tl-info">
+          <h4>Criação de usuários</h4>
+          <p>Crie os acessos nos marketplaces utilizando o e-mail fornecido pela Koncili.</p>
         </div>
       </div>
 
-      <div class="timeline-item">
-        <div class="timeline-left">
-          <div class="timeline-num">2</div>
-          <div class="timeline-line"></div>
-        </div>
-        <div class="timeline-right">
-          <h3>Integração da plataforma</h3>
-          <p>Integração das contas dos marketplaces diretamente no painel Koncili para início da conciliação.</p>
+      <div class="tl-item">
+        <div class="tl-num">2</div>
+        <div class="tl-info">
+          <h4>Integração da plataforma</h4>
+          <p>Conecte as contas dos canais ao painel Koncili com o acesso disponibilizado.</p>
         </div>
       </div>
 
-      <div class="timeline-item">
-        <div class="timeline-left">
-          <div class="timeline-num">3</div>
-          <div class="timeline-line"></div>
-        </div>
-        <div class="timeline-right">
-          <h3>Reunião de Kickoff</h3>
-          <p>Alinhamento entre todas as áreas envolvidas para formalizar o início do projeto.</p>
-          <span class="timeline-tag">⏱ Duração: 30 min</span>
+      <div class="tl-item">
+        <div class="tl-num">3</div>
+        <div class="tl-info">
+          <h4>Reunião de Kickoff</h4>
+          <p>Alinhamento inicial com todas as áreas envolvidas para garantir uma operação integrada.</p>
+          <span class="tl-tag">⏱ 30 min</span>
         </div>
       </div>
 
-      <div class="timeline-item">
-        <div class="timeline-left">
-          <div class="timeline-num">4</div>
-          <div class="timeline-line"></div>
-        </div>
-        <div class="timeline-right">
-          <h3>Treinamento de funcionalidades</h3>
-          <p>Apresentação completa das funcionalidades da plataforma Koncili para sua equipe.</p>
-          <span class="timeline-tag">⏱ Duração: 30 a 45 min</span>
+      <div class="tl-item">
+        <div class="tl-num">4</div>
+        <div class="tl-info">
+          <h4>Treinamento de funcionalidades</h4>
+          <p>Capacitação completa sobre as funcionalidades da plataforma Koncili para o time operacional.</p>
+          <span class="tl-tag">⏱ 30 a 45 min</span>
         </div>
       </div>
 
-      <div class="timeline-item nps">
-        <div class="timeline-left">
-          <div class="timeline-num">NPS</div>
-          <div class="timeline-line"></div>
-        </div>
-        <div class="timeline-right">
-          <h3>Pesquisa de satisfação</h3>
-          <p>Ao final do onboarding, você receberá uma pesquisa de satisfação sobre o atendimento da nossa equipe.</p>
-          <span class="timeline-tag">⭐ Sua opinião é muito importante!</span>
+      <div class="tl-item">
+        <div class="tl-num nps">NPS</div>
+        <div class="tl-info">
+          <h4>Pesquisa de satisfação</h4>
+          <p>Ao final do onboarding, realizamos uma pesquisa de satisfação sobre o atendimento da área.</p>
+          <span class="tl-tag teal">Pós onboarding</span>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- INFO + WHATSAPP -->
-  <div class="info-box">
-    <div class="info-box-icon">💡</div>
-    <div class="info-box-text">
+  <!-- HELP -->
+  <div class="help-bar">
+    <div>
       <h3>Precisa de ajuda?</h3>
-      <p>Em caso de dúvidas durante o processo, entre em contato com a equipe Koncili pelo WhatsApp. Estamos prontos para te ajudar!</p>
-      <a class="wa-btn" href="https://wa.me/5544991429267?text=Olá!%20Sou%20seller%20Koncili%20e%20preciso%20de%20ajuda%20com%20o%20onboarding." target="_blank">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Falar com a Koncili
-      </a>
+      <p>Nossa equipe de implantação está disponível para te apoiar em cada etapa.</p>
     </div>
+    <a class="wa-btn" href="https://wa.me/5544991429267?text=Olá!%20Sou%20seller%20Koncili%20e%20preciso%20de%20ajuda%20com%20o%20onboarding." target="_blank">
+      <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Falar com a equipe
+    </a>
   </div>
 
 </main>
 
-<!-- WhatsApp Floating Button -->
-<a class="wa-float" href="https://wa.me/5544991429267?text=Olá!%20Sou%20seller%20Koncili%20e%20preciso%20de%20ajuda%20com%20o%20onboarding." target="_blank">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  Falar com a Koncili
+<!-- FLOAT WA -->
+<a class="float-wa" href="https://wa.me/5544991429267?text=Olá!%20Sou%20seller%20Koncili%20e%20preciso%20de%20ajuda%20com%20o%20onboarding." target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<footer>© 2025 Koncili · Serviço de Conciliação · Todos os direitos reservados</footer>
 </body>
 </html>
