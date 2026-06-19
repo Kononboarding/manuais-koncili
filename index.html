@@ -117,11 +117,12 @@
 
     .etapas-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 24px;
       margin-bottom: 72px;
     }
-    @media (max-width: 640px) { .etapas-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 860px) { .etapas-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .etapas-grid { grid-template-columns: 1fr; } }
 
     .etapa-card {
       background: var(--white);
@@ -341,6 +342,12 @@
   <p class="section-label">Por onde começar</p>
 
   <div class="etapas-grid">
+    <a href="kickoff.html" class="etapa-card" style="border-color:#00b1b1;">
+      <div class="etapa-num" style="background:#00b1b1;">🎯</div>
+      <h3 style="color:#00b1b1;">Apresentação de Kickoff</h3>
+      <p>Conheça como funciona o nosso processo de onboarding, o que esperamos de você e o que você pode esperar da Koncili.</p>
+      <div class="etapa-cta" style="background:#00b1b1;">Ver apresentação →</div>
+    </a>
     <a href="etapa1.html" class="etapa-card">
       <div class="etapa-num">1</div>
       <h3>Criar acessos de usuário</h3>
