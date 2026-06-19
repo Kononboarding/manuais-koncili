@@ -386,25 +386,45 @@
 
   <p class="section-label">Por onde começar</p>
 
-  <div class="etapas-grid">
-    <a href="kickoff.html" class="etapa-card" style="border-color:#00b1b1;">
-      <div class="etapa-num" style="background:#00b1b1;">🎯</div>
-      <h3 style="color:#00b1b1;">Apresentação de Kickoff</h3>
-      <p>Conheça como funciona o nosso processo de onboarding, o que esperamos de você e o que você pode esperar da Koncili.</p>
-      <div class="etapa-cta" style="background:#00b1b1;">Ver apresentação →</div>
-    </a>
-    <a href="etapa1.html" class="etapa-card">
+  <!-- fluxo visual: etapa 1 → etapa 2 → kickoff -->
+  <div style="display:flex;align-items:stretch;gap:0;">
+
+    <a href="etapa1.html" class="etapa-card" style="flex:1;">
       <div class="etapa-num">1</div>
       <h3>Criar acessos de usuário</h3>
       <p>Crie os acessos em cada marketplace que será operado, utilizando os e-mails e manuais disponibilizados pela equipe Koncili.</p>
       <div class="etapa-cta">Acessar manuais →</div>
     </a>
-    <a href="etapa2.html" class="etapa-card">
+
+    <div style="display:flex;align-items:center;padding:0 4px;flex-shrink:0;">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="13" fill="#e8f7e8" stroke="#3aaa35" stroke-width="1.5"/>
+        <path d="M10 14h8M15 11l3 3-3 3" stroke="#3aaa35" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <a href="etapa2.html" class="etapa-card" style="flex:1;">
       <div class="etapa-num">2</div>
       <h3>Integrar no painel Koncili</h3>
       <p>Integre as contas que serão operadas diretamente no painel da Koncili, utilizando o acesso fornecido pela equipe de implantação.</p>
       <div class="etapa-cta">Acessar integração →</div>
     </a>
+
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 4px;flex-shrink:0;gap:4px;">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="13" fill="#e0f7f7" stroke="#00b1b1" stroke-width="1.5"/>
+        <path d="M10 14h8M15 11l3 3-3 3" stroke="#00b1b1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span style="font-size:9px;font-weight:700;color:#00b1b1;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;">Após etapas 1 e 2</span>
+    </div>
+
+    <a href="kickoff.html" class="etapa-card" style="flex:1;border-color:#00b1b1;">
+      <div class="etapa-num" style="background:#00b1b1;">🎯</div>
+      <h3 style="color:#00b1b1;">Reunião de Kickoff</h3>
+      <p>Agendamos o kickoff após a conclusão das etapas 1 e 2. Conheça o que esperar da reunião e do processo de onboarding.</p>
+      <div class="etapa-cta" style="background:#00b1b1;">Ver apresentação →</div>
+    </a>
+
   </div>
 
   <!-- TIMELINE -->
