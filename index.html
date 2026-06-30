@@ -338,6 +338,96 @@
     }
     .float-wa:hover { transform: scale(1.1); }
     .float-wa svg { width: 28px; height: 28px; fill: white; }
+
+    /* ── PERFIL SELECTOR ── */
+    .perfil-section {
+      background: white;
+      border-bottom: 1px solid #e8e8e8;
+      padding: 36px 48px;
+    }
+    .perfil-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gray-mid);
+      margin-bottom: 16px;
+    }
+    .perfil-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 760px;
+    }
+    @media (max-width: 560px) { .perfil-grid { grid-template-columns: 1fr; } }
+
+    .perfil-card {
+      border: 2px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 20px 24px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex; align-items: flex-start; gap: 14px;
+      background: white;
+      text-align: left;
+      width: 100%;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .perfil-card:hover {
+      border-color: var(--green);
+      box-shadow: 0 4px 16px rgba(58,170,53,0.10);
+    }
+    .perfil-card.active {
+      border-color: var(--green);
+      background: #f2fbf2;
+      box-shadow: 0 4px 16px rgba(58,170,53,0.12);
+    }
+    .perfil-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .perfil-card.active .perfil-icon { background: #e0f5e0; }
+    .perfil-text { flex: 1; }
+    .perfil-text strong {
+      display: block; font-size: 14px; font-weight: 800;
+      color: var(--navy); margin-bottom: 4px;
+    }
+    .perfil-text span {
+      font-size: 12px; color: var(--gray-mid); line-height: 1.5;
+    }
+    .perfil-check {
+      width: 20px; height: 20px; border-radius: 50%;
+      border: 2px solid #e0e0e0;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+      transition: all 0.2s;
+    }
+    .perfil-card.active .perfil-check {
+      background: var(--green); border-color: var(--green);
+    }
+    .perfil-check svg { display: none; }
+    .perfil-card.active .perfil-check svg { display: block; }
+
+    /* Seção visível por perfil */
+    .view-novo { display: block; }
+    .view-cliente { display: none; }
+
+    /* Timeline simplificada (cliente existente) */
+    .tl-simple {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .tl-simple-item {
+      background: white;
+      border-radius: 10px;
+      padding: 18px 22px;
+      display: flex; align-items: flex-start; gap: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      justify-content: space-between; flex-wrap: wrap;
+    }
+    .tl-simple-left {
+      display: flex; align-items: flex-start; gap: 16px;
+      flex: 1; min-width: 200px;
+    }
   </style>
 </head>
 <body>
@@ -365,8 +455,45 @@
   </div>
 </div>
 
+<!-- SELETOR DE PERFIL -->
+<div class="perfil-section">
+  <p class="perfil-label">Qual é o seu caso?</p>
+  <div class="perfil-grid">
+
+    <button class="perfil-card active" id="btn-novo" onclick="selecionarPerfil('novo')">
+      <div class="perfil-icon">🆕</div>
+      <div class="perfil-text">
+        <strong>Sou novo seller Koncili</strong>
+        <span>Estou começando agora e preciso passar por todas as etapas do onboarding.</span>
+      </div>
+      <div class="perfil-check">
+        <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+          <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </button>
+
+    <button class="perfil-card" id="btn-cliente" onclick="selecionarPerfil('cliente')">
+      <div class="perfil-icon">✅</div>
+      <div class="perfil-text">
+        <strong>Já sou cliente Koncili</strong>
+        <span>Preciso integrar uma ou mais contas de marketplace na plataforma.</span>
+      </div>
+      <div class="perfil-check">
+        <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+          <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </button>
+
+  </div>
+</div>
+
 <!-- MAIN -->
 <main>
+
+  <!-- ═══ FLUXO: NOVO SELLER ═══ -->
+  <div id="view-novo" class="view-novo">
 
   <!-- PRAZO IMPORTANTE -->
   <div class="prazo-banner">
@@ -458,6 +585,58 @@
     </div>
   </div>
 
+  </div><!-- /view-novo -->
+
+  <!-- ═══ FLUXO: JÁ SOU CLIENTE ═══ -->
+  <div id="view-cliente" class="view-cliente">
+
+    <div style="background:#e8f7e8;border-left:4px solid var(--green);border-radius:0 8px 8px 0;padding:16px 20px;margin-bottom:36px;display:flex;gap:12px;align-items:flex-start;">
+      <span style="font-size:20px;">✅</span>
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;">Apenas 2 etapas para cada conta</p>
+        <p style="font-size:13px;color:#3c3c3b;line-height:1.6;">Como você já é cliente Koncili, basta criar o acesso de cada nova conta no marketplace e integrar ao painel. Repita as etapas para cada canal que precisar adicionar.</p>
+      </div>
+    </div>
+
+    <div class="timeline-wrap">
+      <h2>Etapas para <span>nova integração</span></h2>
+      <div class="tl-simple">
+
+        <div class="tl-simple-item">
+          <div class="tl-simple-left">
+            <div class="tl-num">1</div>
+            <div class="tl-info">
+              <h4>Criação de usuários no marketplace</h4>
+              <p>Para cada nova conta, crie o acesso utilizando o e-mail fornecido pela equipe Koncili. Siga o manual do marketplace correspondente.</p>
+            </div>
+          </div>
+          <a href="etapa1.html" style="display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:#fff;font-size:12px;font-weight:700;padding:8px 16px;border-radius:6px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Ver manuais →</a>
+        </div>
+
+        <div class="tl-simple-item">
+          <div class="tl-simple-left">
+            <div class="tl-num">2</div>
+            <div class="tl-info">
+              <h4>Integração no Painel Koncili</h4>
+              <p>Acesse o painel Koncili e conecte cada nova conta do marketplace. Repita esse passo para todas as contas que precisar adicionar.</p>
+            </div>
+          </div>
+          <a href="etapa2.html" style="display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:#fff;font-size:12px;font-weight:700;padding:8px 16px;border-radius:6px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Integrar conta →</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-top:32px;background:#fff8e1;border:2px solid #f9a825;border-radius:12px;padding:20px 24px;display:flex;gap:14px;align-items:flex-start;">
+      <span style="font-size:24px;flex-shrink:0;">📅</span>
+      <div>
+        <p style="font-size:13px;font-weight:800;color:#e65100;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Atenção ao prazo</p>
+        <p style="font-size:13px;color:#5d4037;line-height:1.7;">Integrações concluídas <strong style="color:#bf360c;">até o dia 20 do mês</strong> serão conciliadas ainda neste mês. Após essa data, a conciliação ocorrerá apenas no mês seguinte.</p>
+      </div>
+    </div>
+
+  </div><!-- /view-cliente -->
+
   <!-- EQUIPE -->
   <div class="equipe-wrap">
     <h2>Sua equipe <span>dedicada</span></h2>
@@ -534,5 +713,17 @@
   <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
+<script>
+function selecionarPerfil(perfil) {
+  // atualiza botões
+  document.getElementById('btn-novo').classList.toggle('active', perfil === 'novo');
+  document.getElementById('btn-cliente').classList.toggle('active', perfil === 'cliente');
+  // mostra/oculta views
+  document.getElementById('view-novo').style.display = perfil === 'novo' ? 'block' : 'none';
+  document.getElementById('view-cliente').style.display = perfil === 'cliente' ? 'block' : 'none';
+  // scroll suave para o conteúdo
+  document.querySelector('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
 </body>
 </html>
