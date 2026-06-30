@@ -3,870 +3,258 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Assistente Koncili</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <title>Assistente IA — Koncili</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    :root{
-      --green:#3aaa35;--green-light:#74e635;--navy:#153137;
-      --teal:#00b1b1;--gray:#787878;--bg:#f5f5f5;--white:#fff;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #3aaa35;
+      --green-light: #74e635;
+      --navy: #153137;
+      --teal: #00b1b1;
+      --gray-dark: #3c3c3b;
+      --gray-mid: #787878;
+      --white: #ffffff;
+      --bg: #f5f5f5;
     }
-    html,body{height:100%;font-family:'Montserrat',sans-serif;background:var(--bg);color:#3c3c3b;}
-    body{display:flex;flex-direction:column;height:100vh;overflow:hidden;}
+    html, body {
+      height: 100%;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg);
+      color: var(--gray-dark);
+    }
 
-    /* HEADER */
-    header{background:var(--white);border-bottom:3px solid var(--green);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,.08);flex-shrink:0;}
-    .logo-area{display:flex;align-items:center;gap:10px;}
-    .logo-area svg{height:28px;}
-    .agent-badge{background:var(--green);color:#fff;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:4px;}
-    .back-btn{font-size:12px;font-weight:700;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;opacity:.7;}
-    .back-btn:hover{opacity:1;}
+    header {
+      background: var(--white);
+      border-bottom: 3px solid var(--green);
+      padding: 16px 48px;
+      display: flex; align-items: center; gap: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .back-btn {
+      font-size: 12px; font-weight: 700; color: var(--gray-mid);
+      text-decoration: none; display: flex; align-items: center; gap: 6px;
+      text-transform: uppercase; letter-spacing: 1px; transition: color 0.2s;
+    }
+    .back-btn:hover { color: var(--green); }
+    .divider { width: 1px; height: 24px; background: #e0e0e0; }
+    .logo svg { height: 28px; }
 
-    /* LAYOUT */
-    .chat-layout{flex:1;display:flex;flex-direction:column;max-width:800px;margin:0 auto;width:100%;padding:24px 16px 0;overflow:hidden;min-height:0;}
+    .page-wrap {
+      min-height: calc(100vh - 67px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 48px 24px;
+    }
 
-    /* API KEY BANNER */
-    #api-banner{background:#fff8e1;border:1.5px solid #f9a825;border-radius:10px;padding:14px 18px;margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
-    #api-banner p{font-size:12px;color:#5d4037;flex:1;min-width:180px;}
-    #api-banner input{flex:2;min-width:220px;border:1.5px solid #f9a825;border-radius:6px;padding:8px 12px;font-family:inherit;font-size:12px;outline:none;}
-    #api-banner button{background:var(--navy);color:#fff;border:none;border-radius:6px;padding:8px 16px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;}
-    #api-banner button:hover{background:var(--green);}
+    .card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(21,49,55,0.10);
+      max-width: 560px; width: 100%;
+      overflow: hidden;
+    }
 
-    /* MESSAGES */
-    #messages{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:14px;padding:4px 2px 24px;}
-    .msg{display:flex;gap:10px;align-items:flex-start;max-width:90%;}
-    .msg.user{flex-direction:row-reverse;align-self:flex-end;}
-    .avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
-    .avatar.bot{background:var(--navy);}
-    .avatar.user{background:var(--green);}
-    .bubble{padding:12px 16px;border-radius:12px;font-size:13px;line-height:1.65;}
-    .bubble.bot{background:var(--white);border:1px solid #e8e8e8;border-bottom-left-radius:4px;color:#3c3c3b;}
-    .bubble.user{background:var(--navy);color:#fff;border-bottom-right-radius:4px;}
-    .bubble strong{font-weight:700;}
-    .bubble ol,.bubble ul{padding-left:18px;margin:6px 0;}
-    .bubble li{margin:3px 0;}
-    .bubble hr{border:none;border-top:1px solid #e0e0e0;margin:10px 0;}
-    .bubble code{background:#f0f0f0;border-radius:4px;padding:1px 5px;font-size:12px;}
+    .card-banner {
+      background: var(--navy);
+      padding: 36px 40px 32px;
+      position: relative; overflow: hidden;
+    }
+    .card-banner::before {
+      content: '';
+      position: absolute; right: -30px; bottom: -30px;
+      width: 160px; height: 160px;
+      border: 24px solid rgba(58,170,53,0.12);
+      border-radius: 50%;
+    }
+    .card-banner::after {
+      content: '';
+      position: absolute; right: 30px; top: -20px;
+      width: 80px; height: 80px;
+      border: 16px solid rgba(0,177,177,0.10);
+      border-radius: 50%;
+    }
 
-    /* FEEDBACK */
-    .feedback{display:flex;align-items:center;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid #f0f0f0;}
-    .feedback span{font-size:11px;color:var(--gray);}
-    .fb-btn{border:1.5px solid #e0e0e0;background:#fff;border-radius:6px;padding:4px 10px;font-size:12px;cursor:pointer;transition:all .15s;}
-    .fb-btn:hover{border-color:var(--green);background:#e8f7e8;}
-    .fb-btn.active-yes{border-color:var(--green);background:#e8f7e8;color:var(--green);}
-    .fb-btn.active-no{border-color:#e53935;background:#ffebee;color:#e53935;}
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.85);
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 5px 12px; border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--teal);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
 
-    /* TYPING */
-    .typing .bubble.bot{display:flex;align-items:center;gap:6px;padding:14px 18px;}
-    .dot{width:7px;height:7px;border-radius:50%;background:#bbb;animation:bounce .9s infinite;}
-    .dot:nth-child(2){animation-delay:.15s;}
-    .dot:nth-child(3){animation-delay:.3s;}
-    @keyframes bounce{0%,80%,100%{transform:translateY(0);}40%{transform:translateY(-6px);}}
+    .robot-icon {
+      font-size: 52px; margin-bottom: 16px; display: block;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    }
 
-    /* QUICK REPLIES */
-    #quick-replies{display:flex;flex-wrap:wrap;gap:8px;padding:0 2px 14px;}
-    .qr-btn{background:#fff;border:1.5px solid #e0e0e0;border-radius:20px;padding:6px 14px;font-family:inherit;font-size:12px;cursor:pointer;transition:all .15s;color:#3c3c3b;}
-    .qr-btn:hover{border-color:var(--green);color:var(--green);}
+    .card-banner h1 {
+      font-size: 26px; font-weight: 900; color: white;
+      margin-bottom: 8px; line-height: 1.2;
+    }
+    .card-banner h1 span { color: var(--green-light); }
+    .card-banner p {
+      font-size: 13px; color: rgba(255,255,255,0.65);
+      line-height: 1.6; max-width: 400px;
+    }
 
-    /* INPUT */
-    .input-area{background:#fff;border:1.5px solid #e0e0e0;border-radius:12px;display:flex;align-items:flex-end;gap:8px;padding:10px 12px;margin-bottom:20px;transition:border .2s;}
-    .input-area:focus-within{border-color:var(--green);}
-    #user-input{flex:1;border:none;outline:none;font-family:inherit;font-size:13px;resize:none;min-height:22px;max-height:120px;line-height:1.5;}
-    .attach-btn{background:none;border:none;cursor:pointer;padding:4px;color:var(--gray);display:flex;align-items:center;}
-    .attach-btn:hover{color:var(--green);}
-    .send-btn{background:var(--green);border:none;border-radius:8px;padding:7px 14px;cursor:pointer;color:#fff;font-size:12px;font-weight:700;font-family:inherit;white-space:nowrap;transition:background .15s;}
-    .send-btn:hover{background:#2d9429;}
-    .send-btn:disabled{background:#ccc;cursor:not-allowed;}
-    #img-preview{display:none;align-items:center;gap:8px;padding:6px 2px;font-size:12px;color:var(--gray);}
-    #img-preview img{height:40px;border-radius:4px;border:1px solid #e0e0e0;}
-    #img-preview button{background:none;border:none;cursor:pointer;font-size:16px;color:#e53935;}
-    #file-input{display:none;}
+    .card-body { padding: 36px 40px; }
+
+    .features-title {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gray-mid);
+      margin-bottom: 20px;
+    }
+
+    .features-list { list-style: none; margin-bottom: 32px; }
+    .features-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 13px; line-height: 1.5; color: var(--gray-dark);
+    }
+    .features-list li:last-child { border-bottom: none; }
+    .feat-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: #f0faf0; color: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0; margin-top: 1px;
+    }
+    .feat-text strong {
+      display: block; font-size: 13px; font-weight: 700;
+      color: var(--navy); margin-bottom: 2px;
+    }
+
+    .status-bar {
+      background: #f0f9f0;
+      border: 1.5px solid #c3e6c1;
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 24px;
+    }
+    .status-icon { font-size: 22px; flex-shrink: 0; }
+    .status-text strong {
+      display: block; font-size: 13px; font-weight: 700;
+      color: var(--navy); margin-bottom: 2px;
+    }
+    .status-text span { font-size: 12px; color: var(--gray-mid); }
+
+    .progress-label {
+      display: flex; justify-content: space-between;
+      font-size: 11px; font-weight: 700; color: var(--gray-mid);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;
+    }
+    .progress-bar {
+      height: 6px; background: #e8e8e8; border-radius: 3px; overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .progress-fill {
+      height: 100%; width: 65%;
+      background: linear-gradient(90deg, var(--green), var(--green-light));
+      border-radius: 3px;
+      animation: shimmer 2s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .back-link {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--navy); color: white;
+      padding: 13px 24px; border-radius: 8px;
+      text-decoration: none; font-size: 13px; font-weight: 700;
+      transition: background 0.2s;
+    }
+    .back-link:hover { background: var(--green); }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="logo-area">
-    <svg viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="24" font-family="Montserrat,sans-serif" font-weight="800" font-size="22" fill="#153137">kon</text>
-      <text x="42" y="24" font-family="Montserrat,sans-serif" font-weight="800" font-size="22" fill="#3aaa35">cili</text>
+  <a href="index.html" class="back-btn">← Voltar</a>
+  <div class="divider"></div>
+  <a href="index.html" class="logo">
+    <svg viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,20 10,8 14,12 6,20 14,28 10,32" fill="#3aaa35"/>
+      <polygon points="10,20 20,8 24,12 16,20 24,28 20,32" fill="#3aaa35"/>
+      <text x="30" y="28" font-family="Montserrat,Arial,sans-serif" font-weight="800" font-size="22" fill="#3c3c3b" letter-spacing="2">KONCILI</text>
     </svg>
-    <span class="agent-badge">Assistente IA</span>
-  </div>
-  <a href="index.html" class="back-btn">← Voltar ao portal</a>
+  </a>
 </header>
 
-<div class="chat-layout">
+<div class="page-wrap">
+  <div class="card">
 
-  <!-- API Key -->
-  <div id="api-banner">
-    <p>🔑 Insira sua chave da API Anthropic para ativar o assistente:</p>
-    <input type="password" id="api-key-input" placeholder="sk-ant-..." autocomplete="off"/>
-    <button onclick="saveKey()">Ativar</button>
+    <div class="card-banner">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Em desenvolvimento
+      </div>
+      <span class="robot-icon">🤖</span>
+      <h1>Assistente <span>IA Koncili</span></h1>
+      <p>Um agente inteligente que responde dúvidas sobre onboarding, integrações e uso da plataforma — disponível em breve para sellers e analistas.</p>
+    </div>
+
+    <div class="card-body">
+
+      <p class="features-title">O que estará disponível</p>
+      <ul class="features-list">
+        <li>
+          <div class="feat-icon">💬</div>
+          <div class="feat-text">
+            <strong>Respostas instantâneas</strong>
+            Tire dúvidas sobre criação de acessos, integrações e erros comuns sem esperar atendimento.
+          </div>
+        </li>
+        <li>
+          <div class="feat-icon">📸</div>
+          <div class="feat-text">
+            <strong>Análise de prints</strong>
+            Envie uma captura de tela e o assistente identifica o problema e orienta o próximo passo.
+          </div>
+        </li>
+        <li>
+          <div class="feat-icon">📚</div>
+          <div class="feat-text">
+            <strong>Base de conhecimento Koncili</strong>
+            Alimentado pelos manuais oficiais de todos os marketplaces integrados.
+          </div>
+        </li>
+      </ul>
+
+      <div class="status-bar">
+        <span class="status-icon">⚙️</span>
+        <div class="status-text">
+          <strong>Aguardando liberação da TI</strong>
+          <span>Integração com a API em andamento</span>
+        </div>
+      </div>
+
+      <div class="progress-label">
+        <span>Progresso</span>
+        <span>65%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+
+      <a href="index.html" class="back-link">← Voltar ao portal de onboarding</a>
+
+    </div>
   </div>
-
-  <!-- Messages -->
-  <div id="messages"></div>
-
-  <!-- Quick replies -->
-  <div id="quick-replies">
-    <button class="qr-btn" onclick="sendQuick('Como criar acesso no Mercado Livre?')">Mercado Livre</button>
-    <button class="qr-btn" onclick="sendQuick('Como integrar a Amazon no Koncili?')">Amazon</button>
-    <button class="qr-btn" onclick="sendQuick('Como criar acesso na Shopee?')">Shopee</button>
-    <button class="qr-btn" onclick="sendQuick('Como integrar o iFood?')">iFood</button>
-    <button class="qr-btn" onclick="sendQuick('Quais são as etapas do onboarding?')">Etapas do onboarding</button>
-    <button class="qr-btn" onclick="sendQuick('Como criar acesso na Americanas?')">Americanas</button>
-  </div>
-
-  <!-- Image preview -->
-  <div id="img-preview">
-    <img id="preview-img" src="" alt=""/>
-    <span id="preview-name"></span>
-    <button onclick="clearImage()" title="Remover">✕</button>
-  </div>
-
-  <!-- Input -->
-  <div class="input-area">
-    <button class="attach-btn" onclick="document.getElementById('file-input').click()" title="Enviar print">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-    </button>
-    <textarea id="user-input" placeholder="Descreva sua dúvida ou envie um print..." rows="1"
-      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();send()}"
-      oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"></textarea>
-    <button class="send-btn" id="send-btn" onclick="send()">Enviar</button>
-  </div>
-  <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)"/>
 </div>
 
-<script>
-const KNOWLEDGE_BASE = `# Amazon — Criação de Acesso (ação do seller)
-
-O analista deve aceitar o convite primeiro, antes de o seller iniciar o processo.
-
-1. Acessar **Seller Central** > Configurações > Permissões de Usuário
-2. Clicar em **"Convidar novo usuário"**
-3. Preencher: Nome = \`Koncili\`, E-mail = e-mail do analista
-4. Liberar **51 permissões** específicas conforme lista
-5. Aguardar **5 minutos** após liberação
-6. Se aparecer **"Finalizar verificação"** = prazo de 72h+ para ativar
-
-⚠️ A Koncili **não fornece telefone nem documentos** para o seller.
-
-
-# Americanas — Criação de Acesso (ação do seller)
-
-**Passo 1 — Criar perfil:**
-1. Segurança > Perfil de Acesso > Adicionar Perfil
-2. Nome do perfil: \`Koncili\`
-3. Permissões: Atendimento, Cadastro, Dashboard, Financeiro, Produtos, Relatórios, Vendas
-
-**Passo 2 — Criar usuário:**
-1. Segurança > Gestão de Usuário > Adicionar Usuário
-2. Nome: \`Koncili\`
-3. E-mail: \`seller@koncili.com\` (e-mail fornecido pelo analista)
-4. Perfil: \`Koncili\`
-
-
-# Carrefour — Criação de Acesso (ação do seller)
-
-1. Configurações > Usuários > Criar usuário
-2. E-mail: \`@koncili.com\` (fornecido pelo analista)
-3. Funções: **Gestão de pedidos** + **Contabilidade**
-
-
-# Lojas Colombo — Criação de Acesso (ação do seller)
-
-1. Portal > Configurações > Usuários > Cadastrar
-2. Perfil: \`Seller Financeiro\`
-3. Tipo: \`Financeiro\`
-4. E-mail: \`@koncili.com\` (fornecido pelo analista)
-5. Nome: \`[Nome da conta] - Koncili\`
-6. Telefone: telefone da empresa do seller
-
-
-# Dafiti — Criação de Acesso (ação do seller)
-
-1. Seller Center > Configurações > Gerenciar Usuários > Add User
-2. Role: \`Seller Full Access\`
-3. E-mail: e-mail do analista
-4. Nome: \`Koncili\`
-5. Idioma: \`Português\`
-6. User Settings: marcar **Ativo** + **Allow using password**
-7. Salvar
-
-
-# iFood — Criação de Acesso (ação do seller)
-
-1. Minha loja > Gestão de acessos > Criar acesso
-2. Re-autenticar quando solicitado
-3. Perfil: **Gestão Financeira** (⚠️ NÃO usar Gestão Geral)
-4. Nome: \`KONCILI\`
-5. E-mail: \`@koncili.com\` (fornecido pelo analista)
-6. Selecionar as lojas
-7. Salvar
-
-📧 Após salvar, um e-mail de ativação é enviado ao analista — ele precisa ativar.
-
-
-# Kabum — Criação de Acesso (ação do seller)
-
-1. Configurações > Usuários > Criar usuário
-2. E-mail: \`@koncili.com\` (fornecido pelo analista)
-3. Funções: **Gestão de pedidos** + **Contabilidade**
-
-
-# Leroy Merlin — Criação de Acesso (ação do seller)
-
-1. Configurações > Usuários > Criar usuário
-2. E-mail: \`@koncili.com\` (fornecido pelo analista)
-3. Funções: **Gestão de pedidos** + **Contabilidade**
-
-
-# Madeira Madeira — Criação de Acesso (ação do seller)
-
-1. Administração > Usuário > Adicionar Usuário
-2. Nome: \`Koncili\`
-3. E-mail: \`@koncili.com\` (fornecido pelo analista)
-4. Celular: telefone da empresa do seller
-5. Nível de Acesso: \`Administrador\`
-6. Senha: \`Koncili2025\`
-
-
-# Magazine Luiza — Criação de Acesso (ação do seller)
-
-1. Menu > Configurações > Controle de Usuários > Novo usuário
-2. Nome: \`Koncili e Conciliação\`
-3. E-mail: e-mail do Boas-Vindas ou e-mail do analista
-4. Nível de Acesso: \`Seller Financeiro\`
-
-
-# Mercado Livre — Criação de Acesso (ação do seller)
-
-1. Seu Negócio > Configurações > Colaboradores
-2. Criar função: \`KONCILI\`
-3. Permissões Mercado Livre:
-   - Gerenciar minhas vendas + Baixar arquivo Excel
-   - Ver horários de envios
-   - Consultar todas as compras
-4. Permissões Mercado Pago:
-   - Gerenciar reclamações e contestações
-   - Ver saldo e transações
-   - Ver certificados de retenção, balanços, relatórios de contabilidade, relatórios de transações
-   - Acessar Métricas (Conferir todas)
-   - Consultar todas as operações
-5. Convidar colaborador com **e-mail do Boas-Vindas**
-
-⚠️ O e-mail **não deve estar cadastrado** no ML/MP anteriormente.
-
-
-# Netshoes — Criação de Acesso (ação do seller)
-
-1. Gestão de Acesso > + Cadastrar Usuário
-2. E-mail: e-mail do analista
-3. Nome: \`KONCILI\`
-4. Tipo de Conta: **Operação** + **Atendimento** + **Financeiro**
-   - ⚠️ NÃO marcar Gerencial
-5. Salvar
-
-
-# Shopee — Criação de Acesso (ação do seller)
-
-## Parte 1 — Criar subconta (se ainda não tiver)
-1. Logo da loja > Configurações da Loja > Conta & Segurança > Gerenciamento de Subconta > Vincular > Usar conta principal
-2. Preencher com dados próprios (telefone + e-mail da empresa)
-3. Definir prefixo de login (ex: \`nomedasuaempresa:main\`)
-4. Logar em https://subaccount.shopee.com/login/
-5. Minha Loja > Vincular uma loja
-6. Autorizar via senha + código de verificação
-
-## Parte 2 — Criar membro Koncili
-1. Menu lateral > Membros > Criar novo
-2. Nome: \`Koncili\`
-3. Telefone: qualquer número (Koncili não disponibiliza)
-4. ID: \`koncili\`
-5. Senha: \`koncili2025\` (analista altera depois)
-6. E-mail: e-mail passado pelo analista (recebe OTP)
-7. Permissões: **Administrador**
-8. Salvar Membro
-9. Copiar conta e senha → enviar no grupo WhatsApp
-
-
-# TikTok Shop — Criação de Acesso (ação do seller)
-
-1. Central do Vendedor > My Account > Account Settings > User Management > Add User
-2. Role: \`Finance Specialist\`
-3. E-mail: e-mail passado pelo analista
-4. Default Language: português ou inglês
-5. Submit
-
-📧 Link de ativação enviado ao e-mail — válido por **120 horas**. Avisar analista para ativar.
-
-
-# Tiny (ERP) — Criação de Acesso (ação do seller)
-
-1. Configurações > Geral > Cadastro e usuários do sistema > Incluir usuário
-2. Nome: \`Koncili\`
-3. Acesso: \`Koncili\`
-4. E-mail: e-mail do analista
-5. Permissões por guia:
-   - **Cadastros** → só Contas a Receber
-   - **Suprimentos** → só Contas a Receber
-   - **Vendas** → NF (Consulta itens, NF por Operação, NF por Cliente, NF por Produto, Evolução Faturamento) + Contas a Receber
-   - **Finanças** → Contas a Receber (Recebimentos + Relatório)
-   - **Ferramentas > Outros** → "Permite importação/exportação" + "Api v3"
-6. Salvar e informar ao analista
-
-
-# Via Varejo / Casas Bahia — Criação de Acesso (ação do seller)
-
-**Passo 1 — Criar perfil:**
-1. Acessos > Perfis > Criar novo perfil
-2. Nome: \`Koncili\`
-3. Descrição: \`Koncili\`
-4. Adicionar roles:
-   - \`ROLE_ACESSO_VIA_PERFORMANCE\`
-   - \`GERENCIA FINANCEIRA\`
-   - \`LEITURA DE INFORMAÇÕES FINANCEIRAS\`
-   - \`ACESSO_DADOS_LOGISTICA\`
-5. Salvar
-
-**Passo 2 — Criar usuário:**
-1. Acessos > Usuários > Criar novo usuário
-2. Nome: \`Koncili\`
-3. Sobrenome: nome da loja
-4. CPF: qualquer (campo obrigatório)
-5. E-mail: e-mail do analista
-6. Associar perfil \`Koncili\`
-7. Criar
-
-
-# Amazon — Integração no Koncili (ação do seller/cliente)
-
-Integrações > Amazon > Gerenciar > Nova conta
-
-1. Digite o nome da conta (igual ao nome da conta no marketplace)
-2. Clique em **"Autenticar conta Amazon"** → abrirá pop-up
-3. Clique em "Oriento a Amazon..." → Continuar
-4. Marque o checkbox e clique em **Confirmar**
-5. Token ativo confirmado
-
-**Dados da importação:**
-- **Início da importação**: 2 meses atrás, iniciando no dia 01
-- **Atrasar importações**: sempre \`1\`
-
-**Repasse:**
-- Marcar flag "Quero automatizar a importação de planilhas de repasse via SBOTs" (data = início do mês atual)
-- Marcar flag "Quero automatizar a criação de planilhas de repasse"
-
-**Parametrização:**
-- Ciclo para pagamento do pedido: \`Padrão\`
-
-6. Salvar (botão no canto inferior direito)
-
-
-# Americanas — Integração no Koncili (ação do seller/cliente)
-
-**Passo 1 — Configurar conta:**
-Integrações > Americanas Marketplace > Gerenciar > Nova conta
-1. Preencher nome da loja
-2. Marcar somente a flag **"Não quero importar planilhas zeradas"**
-3. Selecionar tipo de pagamento (ciclo de contrato)
-4. Salvar
-
-**Passo 2 — Configurar Skyhub:**
-Integrações > Skyhub > Gerenciar
-1. Nome da integração
-2. Marcar flag "Integração ativa"
-3. E-mail de usuário master da conta
-4. Colar o **token/chave de acesso** (gerado no painel da Americanas)
-5. Importar pedidos até quantos dias atrás: \`1\`
-6. Marcar flag "Reimportar pedidos"
-7. Salvar
-8. Clicar no lápis verde > Canais > Novo > Selecionar "Americanas marketplace" > Selecionar conta > Salvar
-
-**Como obter o token da Americanas:**
-1. Acessar https://vendedores.americanas.com.br
-2. Ir em Integrações > Credenciais API
-3. Se não tiver token, abrir chamado: Tipo = Processo de Implantação, Sub = Integração – Usuário e Token
-4. SLA de retorno: **48 horas**. Token = 32 caracteres alfanuméricos.
-
-
-# Dafiti — Integração no Koncili (ação do seller/cliente)
-
-**Passo 1 — Obter credenciais no painel Dafiti:**
-1. Seller Center > Configurações > Aplicações OAuth
-2. Se não existir: clicar em "Add Application"
-   - Application name: \`Koncili\`
-   - Authorization redirect URL: \`https://sellercenter.com.br\`
-   - Salvar
-3. Clicar em editar e copiar **Application ID** e **Application Secret**
-
-**Passo 2 — Configurar no Koncili:**
-Integrações > pesquisar "Dafiti" > clicar no card > Nova conta
-1. Nome da conta (nome da loja)
-2. **Client ID** = Application ID
-3. **Client Secret** = Application Secret
-4. Data de início: 1º dia do mês atual
-5. Modo de contrato: à vista, parcelado ou parcelado com comissão à vista
-6. Salvar
-
-
-# iFood — Integração no Koncili (ação do seller/cliente)
-
-Integrações > iFood > Gerenciar > Nova conta
-
-1. Nome da conta
-2. Selecionar moeda
-3. Marcar flag **"Quero importar os pedidos via integração direta"**
-4. Clicar em **"Autenticar com iFood"**
-5. Pegar **Merchant ID** no portal iFood: Minha loja > Loja > rolar a página até "ID da loja"
-6. Inserir o código de autorização gerado no portal iFood (⏱️ válido por **10 minutos**)
-7. Salvar
-
-**Vigência:**
-- Data inicial e final
-- % Comissão padrão
-- Conta vinculada
-- Tempo de repasse: mensal, quinzenal ou semanal
-
-**Parâmetros de conciliação:** manter padrão (10 dias / 100 de valor)
-
-
-# Kabum — Integração no Koncili (ação do seller/cliente)
-
-**Passo 1 — Obter token no painel Kabum:**
-1. Ícone do usuário (canto superior direito) > Configurações pessoais
-2. Aba **"Chave de API"**
-3. Se não tiver: clicar em "Gerar nova chave"
-4. Copiar a chave
-
-**Passo 2 — Configurar no Koncili:**
-Integrações > pesquisar "Kabum" > clicar no card > Nova conta
-1. Nome da conta
-2. Moeda: \`Real\`
-3. Marcar flag "Integração para importação de pedidos"
-4. Colar chave no campo **Token ID**
-5. Data de importação: 1º dia do mês atual
-6. ⚠️ **Deixar desmarcado** "Automatização de planilhas" (desabilitada pela Kabum)
-7. Salvar
-
-Após salvar, informar a comissão de contrato com a Kabum para o analista finalizar.
-
-
-# Leroy Merlin — Integração no Koncili (ação do seller/cliente)
-
-**Passo 1 — Obter token no painel Leroy:**
-1. Ícone do usuário (canto superior direito) > Perfil > Chave de API
-2. Copiar chave (ou clicar em "Gerar uma nova chave")
-
-**Passo 2 — Configurar no Koncili:**
-Integrações > Leroy Merlin > Gerenciar > Nova conta
-1. Nome da conta
-2. Moeda: \`Real\`
-3. Marcar flag "Integração ativa para importação de pedidos"
-4. Colar no campo **Token ID**
-5. Data de importação: até 2 meses retroativos a partir da data atual
-6. ⚠️ **Não marcar** "Importação de planilhas de repasse"
-7. Salvar
-
-
-# Madeira Madeira — Integração no Koncili (ação do seller/cliente)
-
-**Passo 1 — Obter token no painel Madeira Madeira:**
-1. Integração > Integração de pedidos e produtos
-2. Copiar o valor do campo **"Seu Token"**
-
-**Passo 2 — Configurar no Koncili:**
-Integrações > Madeira Madeira > Nova conta
-1. Nome da conta
-2. Marcar flag **"Conta ativa"**
-3. Colar token no campo **Token de acesso**
-4. Início da importação: até 2 meses atrás a partir da data atual
-5. Atrasar importações: \`1\`
-6. Marcar flag "Automatizar importação de planilhas" → data = 1º dia do mês atual
-7. Marcar flag "Automatizar a criação de planilhas de repasse"
-8. Modelo de contrato: Parcelado ou À vista
-9. Salvar
-
-
-# Magazine Luiza — Integração no Koncili (ação do seller/cliente)
-
-Integrações > Magazine Luiza > Gerenciar > Nova conta
-
-1. Nome da conta
-2. Data de importação: 1 mês atrás, iniciando do 1º dia do mês
-3. Modelo de contrato: À vista ou Parcelado (consultar no painel Magalu: Menu > Financeiro > Condições comerciais)
-4. Salvar
-
-**Autenticação OAuth:**
-5. Clicar na seta na linha da conta > Editar
-6. Clicar em **"Vincular conta Magazine Luiza"**
-7. Precisa estar com a conta Magalu logada no mesmo navegador
-8. Selecionar a conta **Pessoa Jurídica**
-9. Marcar "Selecionar todos" > Continuar
-10. Notificação de "Sucesso" → token ativo
-
-⚠️ A conta Magalu deve estar logada no mesmo navegador que o Koncili.
-
-
-# Mercado Livre — Integração no Koncili (ação do seller/cliente)
-
-Integrações > Mercado Livre > Gerenciar > Nova conta
-
-1. Clicar em Nova conta → abrirá autenticação ML
-2. Clicar em **"Autorizar este aplicativo"**
-3. Aceitar termos (marcar checkbox + Continuar)
-4. Redirecionado ao Koncili:
-   - Nome da conta: **não alterar** (preenchido automaticamente)
-   - Marcar flag **"Conta ativa"**
-   - Data de importação: 2 meses retroativos, 1º dia do mês
-5. Salvar
-
-**Vincular Mercado Pago:**
-6. Clicar na seta na linha da conta > Editar
-7. Clicar em **"Vincular conta Mercado Pago"**
-8. Autorizar "KONCILI para Mercado Pago"
-9. Marcar checkbox + Continuar
-10. Salvar
-11. Clicar no lápis verde para editar a conta MP:
-    - Marcar flag "Quero automatizar a importação de planilhas de repasse"
-    - Data: 1º dia do mês atual, hora 00:00
-    - Tipo de repasse: \`Manual\`
-    - Salvar
-
-✅ Integração finalizada.
-
-
-# Mercado Pago — Configurar Relatório de Repasse (ação do seller/cliente)
-
-Feito após vincular o ML. O relatório de liberações precisa ser configurado.
-
-**No portal do Mercado Pago:**
-1. Relatórios e faturamento > Relatórios de pagamentos e extratos de conta > Liberações > Configurar
-2. Colunas: marcar **"Todas as colunas (46)"**
-3. Idioma do relatório: **Inglês técnico**
-4. Separadores de colunas: **Ponto e vírgula**
-5. Marcar flag "Saldo disponível antes e depois de sacar o dinheiro"
-6. Salvar
-
-**Criar relatório manual:**
-1. Criar relatório > Manual
-2. Definir período
-3. Formato: **xlsx**
-4. Gerar
-
-O relatório ficará disponível na tela de liberações para download.
-
-
-# Shopee — Integração no Koncili (ação do seller/cliente)
-
-Integrações > Shopee > Gerenciar > Nova conta
-
-1. Nome da loja
-2. Data de início: **1º dia do mês atual**
-3. Atrasar importações: \`1\`
-4. Clicar em **"Vincular conta Shopee"**
-5. Pop-up de autenticação: selecionar localidade **Brazil (BR)** e logar com a conta master da Shopee
-6. Confirmar autorização **2 vezes**
-7. Confirmar período de autorização: **365 dias**
-8. Revisar dados e Salvar
-
-⚠️ Se ficar como "aguardando" após salvar, autenticar o token novamente.
-⚠️ Se o navegador bloquear pop-ups, permitir antes de clicar em vincular.
-
-
-# TikTok Shop — Integração no Koncili (ação do seller/cliente)
-
-Integrações > TikTok Shop > Nova conta
-
-**Passo 1 — Criar conta:**
-1. Nome da conta no TikTok
-2. Data de importação: 1 mês retroativo (30 dias), iniciando do dia 1º
-3. Salvar
-
-**Passo 2 — Autenticar:**
-1. Clicar na seta na linha da conta > Editar
-2. Clicar em **"Vincular conta TikTok Shop"**
-3. Tela de instalação → Duração do acesso: **Ilimitado**
-4. E-mail de contato (somente e-mail, telefone é opcional)
-5. Clicar em **"Confirmar instalação"**
-
-**Passo 3 — Autorizar:**
-6. Marcar flag "Reconheço que ao clicar em Autorizar..."
-7. Clicar em **Autorizar**
-8. Aguardar fechamento da janela
-
-✅ Token ativo confirmado → conta integrada.
-
-
-# Via Varejo / Casas Bahia — Integração no Koncili (ação do seller/cliente)
-
-**Passo 1 — Obter token no painel Via Varejo:**
-1. Configurações > Gestão de Integradoras
-2. Clicar em **"Habilitar Integradora"**
-3. Pesquisar \`Koncili\` → selecionar → Habilitando
-4. Token gerado → copiar
-
-**Passo 2 — Configurar no Koncili:**
-Integrações > Casas Bahia Marketplace > Gerenciar > Nova conta
-1. Nome da conta
-2. **Token de acesso**: colar token copiado
-3. Data de importação: até 2 meses atrás
-4. Modelo de contrato: À vista ou Parcelado
-5. Salvar
-
-✅ Conta integrada.
-
-
-# Processo de Onboarding de Sellers — Koncili
-
-## Fase 1 — Pré-Onboarding
-Início após confirmação do faturamento do seller.
-1. Seller faturado → gatilho de início
-2. Criar atividade no sistema — **SLA: 3 dias**
-3. Fila de espera — aguardar disponibilidade
-
-## Fase 2 — Triagem e Preparação
-1. E-mails criados pelo TI?
-   - Não → Aguardar TI — **SLA: 3 dias**
-2. Criar grupo WhatsApp / Primeiro contato
-3. Seller confirmou início?
-   - Não → Cobrar retorno → Fila de Impedimento/Comercial — **SLA: 2 dias** ⚠️ impedimento
-
-## Fase 3 — Start do Projeto
-1. Criar usuários na plataforma Koncili
-2. Integrar contas dos marketplaces
-3. Passar ações ao seller para validação
-
-## Fase 4 — Validação Técnica
-1. Contas integradas e usuários criados?
-   - Não → Impedimento Seller — cobrar ajustes — **SLA: 1 dia** ⚠️ impedimento
-2. Pedidos importados corretamente?
-   - Não → Impedimento Fábrica — problema técnico — **SLA: 3 dias** ⚠️ impedimento
-
-## Fase 5 — Alinhamento e Formalização (Kick-off)
-1. Agendar reunião de kick-off
-2. Apresentar analista de conciliação e especialista KS
-3. Conduzir reunião de alinhamento
-4. Alinhar expectativas
-
-## Fase 6 — Apresentação da Plataforma Koncili
-Após 15 dias do início da conciliação:
-1. Agendar reunião de apresentação
-2. Demonstrar funcionalidades, fluxos e benefícios
-3. Garantir entendimento e alinhamento do dia a dia
-
-## Fase 7 — Formalização e NPS
-1. Formalização com o seller
-2. Envio do link de NPS
-
-## Fase 8 — Handover
-1. Formalizar fim da implantação
-2. Contato do Analista KS com o seller — **SLA: 5 dias**
-
-## Resumo de SLAs
-
-| Etapa                 | SLA    | Tipo        |
-|-----------------------|--------|-------------|
-| Criar atividade       | 3 dias | Normal      |
-| Aguardar TI           | 3 dias | Atenção     |
-| Confirmação do seller | 2 dias | Impedimento |
-| Validação técnica     | 1 dia  | Impedimento |
-| Impedimento fábrica   | 3 dias | Impedimento |
-| Contato KS            | 5 dias | Normal      |
-
-
-`;
-
-const SYSTEM_PROMPT = `Você é o assistente de suporte da Koncili, especialista em ajudar sellers a criar acessos nos marketplaces e integrar suas contas no portal Koncili. Você responde de forma simples, direta e amigável — os sellers podem não ter conhecimento técnico avançado.
-
-Regras de comportamento:
-- Responda APENAS com base nos manuais abaixo
-- Se o seller enviar uma imagem ou print: analise o que está visível, identifique a etapa e o erro, e oriente o próximo passo
-- Use listas numeradas para passos e **negrito** para campos importantes
-- Se o problema não estiver coberto, diga: "Entre em contato com seu analista de implantação"
-- Nunca invente informações que não estejam nos manuais
-
-Após TODA resposta, finalize com:
----
-💬 **Isso resolveu sua dúvida?**
-👍 Sim, funcionou! | 👎 Não resolveu
-
-Base de conhecimento — Manuais de criação de acesso e integração:
-
-${KNOWLEDGE_BASE}`;
-
-let apiKey = '';
-let history = [];
-let pendingImage = null;
-let msgCounter = 0;
-
-function saveKey() {
-  const v = document.getElementById('api-key-input').value.trim();
-  if (!v.startsWith('sk-')) { alert('Chave inválida. Deve começar com sk-'); return; }
-  apiKey = v;
-  document.getElementById('api-banner').style.display = 'none';
-  addBotMessage('Olá! Sou o assistente da **Koncili**. Posso te ajudar com:\n\n- Criação de acessos nos marketplaces\n- Integração de contas no Koncili\n- Dúvidas sobre o processo de onboarding\n\nPode me enviar sua dúvida ou até um **print da tela** que eu analiso! 😊');
-}
-
-function previewImage(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = ev => {
-    pendingImage = { base64: ev.target.result.split(',')[1], type: file.type, name: file.name };
-    document.getElementById('preview-img').src = ev.target.result;
-    document.getElementById('preview-name').textContent = file.name;
-    document.getElementById('img-preview').style.display = 'flex';
-  };
-  reader.readAsDataURL(file);
-}
-
-function clearImage() {
-  pendingImage = null;
-  document.getElementById('img-preview').style.display = 'none';
-  document.getElementById('file-input').value = '';
-}
-
-function addUserMessage(text, hasImage) {
-  const div = document.createElement('div');
-  div.className = 'msg user';
-  div.innerHTML = `
-    <div class="avatar user">👤</div>
-    <div class="bubble user">${hasImage ? '📷 ' : ''}${escHtml(text)}</div>`;
-  document.getElementById('messages').appendChild(div);
-  scrollBottom();
-}
-
-function addTyping() {
-  const div = document.createElement('div');
-  div.className = 'msg typing';
-  div.id = 'typing';
-  div.innerHTML = `<div class="avatar bot">🤖</div><div class="bubble bot"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`;
-  document.getElementById('messages').appendChild(div);
-  scrollBottom();
-}
-
-function removeTyping() {
-  const t = document.getElementById('typing');
-  if (t) t.remove();
-}
-
-function addBotMessage(md) {
-  const id = 'msg-' + (++msgCounter);
-  const div = document.createElement('div');
-  div.className = 'msg';
-  div.innerHTML = `
-    <div class="avatar bot">🤖</div>
-    <div class="bubble bot" id="${id}">
-      ${renderMd(md)}
-      <div class="feedback">
-        <span>💬 Isso resolveu?</span>
-        <button class="fb-btn" onclick="feedback('${id}','yes',this)">👍 Sim</button>
-        <button class="fb-btn" onclick="feedback('${id}','no',this)">👎 Não</button>
-      </div>
-    </div>`;
-  document.getElementById('messages').appendChild(div);
-  scrollBottom();
-}
-
-function feedback(id, type, btn) {
-  const bubble = document.getElementById(id);
-  const btns = bubble.querySelectorAll('.fb-btn');
-  btns.forEach(b => b.classList.remove('active-yes','active-no'));
-  btn.classList.add(type === 'yes' ? 'active-yes' : 'active-no');
-  if (type === 'no') {
-    addBotMessage('Entendido! Vou chamar seu analista de implantação. Enquanto isso, pode descrever melhor o que aconteceu ou enviar um print da tela.');
-  }
-}
-
-function sendQuick(text) {
-  document.getElementById('user-input').value = text;
-  send();
-}
-
-async function send() {
-  if (!apiKey) { alert('Insira sua chave de API primeiro.'); return; }
-  const input = document.getElementById('user-input');
-  const text = input.value.trim();
-  if (!text && !pendingImage) return;
-
-  const displayText = text || 'Veja o print:';
-  addUserMessage(displayText, !!pendingImage);
-
-  const userContent = [];
-  if (pendingImage) {
-    userContent.push({ type: 'image', source: { type: 'base64', media_type: pendingImage.type, data: pendingImage.base64 } });
-  }
-  userContent.push({ type: 'text', text: text || 'O que está errado nessa tela?' });
-
-  history.push({ role: 'user', content: userContent });
-
-  input.value = '';
-  input.style.height = 'auto';
-  clearImage();
-  document.getElementById('send-btn').disabled = true;
-  document.getElementById('quick-replies').style.display = 'none';
-  addTyping();
-
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 1024,
-        system: SYSTEM_PROMPT,
-        messages: history
-      })
-    });
-
-    removeTyping();
-
-    if (!res.ok) {
-      const err = await res.json();
-      addBotMessage(`❌ Erro: ${err.error?.message || 'Falha na API'}. Verifique sua chave.`);
-      history.pop();
-    } else {
-      const data = await res.json();
-      const reply = data.content[0].text;
-      history.push({ role: 'assistant', content: reply });
-      addBotMessage(reply);
-    }
-  } catch(e) {
-    removeTyping();
-    addBotMessage('❌ Erro de conexão. Verifique sua chave e tente novamente.');
-    history.pop();
-  }
-
-  document.getElementById('send-btn').disabled = false;
-}
-
-function renderMd(text) {
-  return text
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
-    .replace(/`(.+?)`/g,'<code>$1</code>')
-    .replace(/^---$/gm,'<hr>')
-    .replace(/^\d+\.\s(.+)$/gm,'<li>$1</li>')
-    .replace(/^[-•]\s(.+)$/gm,'<li>$1</li>')
-    .replace(/(<li>.*<\/li>\n?)+/g, s => `<ol>${s}</ol>`)
-    .replace(/\n/g,'<br>');
-}
-
-function escHtml(t) {
-  return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
-function scrollBottom() {
-  const m = document.getElementById('messages');
-  setTimeout(() => m.scrollTop = m.scrollHeight, 50);
-}
-</script>
 </body>
 </html>
