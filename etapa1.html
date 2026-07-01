@@ -149,6 +149,13 @@
       transition: all 0.2s;
     }
     .btn-dl:hover { border-color: var(--green); color: var(--green); }
+    .btn-em-breve {
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: 7px;
+      background: #e8e8e8; color: #aaa;
+      padding: 11px; border-radius: 7px;
+      border: none; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700;
+      cursor: default;
+    }
 
     /* MODAL */
     .modal-overlay {
@@ -248,6 +255,25 @@
 
   <div class="cards-grid" id="cardsGrid">
 
+    <!-- Americanas -->
+    <div class="card" data-name="americanas">
+      <div class="card-logo-wrap" style="background:#CC0000;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-americanas.png" alt="Americanas"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>AM</div>'"/>
+      </div>
+      <h3>Americanas</h3>
+      <p>Configure o acesso de usuário no painel Americanas Marketplace com as permissões corretas.</p>
+      <ul class="card-steps">
+        <li>Acesse o portal Americanas</li>
+        <li>Crie o usuário com permissão de acesso</li>
+        <li>Salve as credenciais geradas</li>
+      </ul>
+      <div class="card-actions">
+        <a class="btn-ver" href="Manual_Americanas_Koncili.pdf" target="_blank">📄 Ver Manual</a>
+        <a href="Manual_Americanas_Koncili.pdf" class="btn-dl" download title="Baixar PDF">⬇</a>
+      </div>
+    </div>
+
     <!-- Amazon -->
     <div class="card" data-name="amazon">
       <div class="card-logo-wrap" style="background:#FF9900;border-radius:8px;padding:7px;">
@@ -267,60 +293,185 @@
       </div>
     </div>
 
-    <!-- Mercado Livre -->
-    <div class="card" data-name="mercado livre mercadolivre ml">
-      <div class="card-logo-wrap" style="background:#FFE600;border-radius:8px;padding:7px;">
-        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-mercado-livre.png" alt="Mercado Livre"
-             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>ML</div>'"/>
+    <!-- Angeloni -->
+    <div class="card" data-name="angeloni">
+      <div class="card-logo-wrap" style="background:#00923F;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-angeloni.png" alt="Angeloni"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>AN</div>'"/>
       </div>
-      <h3>Mercado Livre</h3>
-      <p>Adicione o colaborador Koncili no painel do Mercado Livre com as permissões corretas.</p>
+      <h3>Angeloni</h3>
+      <p>Crie o acesso de usuário no portal seller do Angeloni com o e-mail fornecido pela Koncili.</p>
       <ul class="card-steps">
-        <li>Acesse o painel do Mercado Livre</li>
-        <li>Adicione o colaborador com o e-mail Koncili</li>
-        <li>Defina as permissões de acesso adequadas</li>
-      </ul>
-      <div class="card-actions">
-        <a class="btn-ver" href="Manual_MercadoLivre_Koncili.pdf" target="_blank">📄 Ver Manual</a>
-        <a href="Manual_MercadoLivre_Koncili.pdf" class="btn-dl" download title="Baixar PDF">⬇</a>
-      </div>
-    </div>
-
-    <!-- Shopee -->
-    <div class="card" data-name="shopee">
-      <div class="card-logo-wrap" style="background:#EE4D2D;border-radius:8px;padding:7px;">
-        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-shopee.png" alt="Shopee"
-             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>S</div>'"/>
-      </div>
-      <h3>Shopee</h3>
-      <p>Crie o sub-usuário no Shopee Seller Center com o e-mail e permissões indicados pela Koncili.</p>
-      <ul class="card-steps">
-        <li>Acesse o Shopee Seller Center</li>
-        <li>Adicione um sub-usuário com o e-mail Koncili</li>
+        <li>Acesse o portal seller Angeloni</li>
+        <li>Crie o usuário com o e-mail Koncili</li>
         <li>Configure as permissões necessárias</li>
       </ul>
       <div class="card-actions">
-        <a class="btn-ver" href="Manual_Shopee_Koncili.pdf" target="_blank">📄 Ver Manual</a>
-        <a href="Manual_Shopee_Koncili.pdf" class="btn-dl" download title="Baixar PDF">⬇</a>
+        <span class="btn-em-breve">🕐 Em breve</span>
       </div>
     </div>
 
-    <!-- Magazine Luiza -->
-    <div class="card" data-name="magazine luiza magalu magazineluiza">
-      <div class="card-logo-wrap" style="background:#0B6FAB;border-radius:8px;padding:7px;">
-        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-magalu.png" alt="Magazine Luiza"
-             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>M</div>'"/>
+    <!-- Carrefour -->
+    <div class="card" data-name="carrefour">
+      <div class="card-logo-wrap" style="background:#003DA5;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-carrefour.png" alt="Carrefour"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>CR</div>'"/>
       </div>
-      <h3>Magazine Luiza</h3>
-      <p>Crie o usuário de acesso no portal seller do Magazine Luiza com o e-mail Koncili.</p>
+      <h3>Carrefour</h3>
+      <p>Crie o acesso de usuário no seller portal do Carrefour para operação integrada.</p>
       <ul class="card-steps">
-        <li>Acesse o portal seller do Magalu</li>
-        <li>Crie o usuário com o e-mail Koncili</li>
-        <li>Valide as permissões configuradas</li>
+        <li>Acesse o seller portal Carrefour</li>
+        <li>Cadastre o usuário de integração</li>
+        <li>Defina as permissões de acesso</li>
       </ul>
       <div class="card-actions">
-        <a class="btn-ver" href="Manual_MagazineLuiza_Koncili.pdf" target="_blank">📄 Ver Manual</a>
-        <a href="Manual_MagazineLuiza_Koncili.pdf" class="btn-dl" download title="Baixar PDF">⬇</a>
+        <a class="btn-ver" href="Manual_Carrefour_Koncili.pdf" target="_blank">📄 Ver Manual</a>
+        <a href="Manual_Carrefour_Koncili.pdf" class="btn-dl" download title="Baixar PDF">⬇</a>
+      </div>
+    </div>
+
+    <!-- Casas Bahia -->
+    <div class="card" data-name="casas bahia casasbahia">
+      <div class="card-logo-wrap" style="background:#006DCC;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-casasbahia.png" alt="Casas Bahia"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>CB</div>'"/>
+      </div>
+      <h3>Casas Bahia</h3>
+      <p>Configure o usuário de integração no portal seller das Casas Bahia.</p>
+      <ul class="card-steps">
+        <li>Acesse o portal Casas Bahia</li>
+        <li>Crie o usuário com e-mail Koncili</li>
+        <li>Valide o acesso criado</li>
+      </ul>
+      <div class="card-actions">
+        <a class="btn-ver" href="Manual_CasasBahia_Koncili.pdf" target="_blank">📄 Ver Manual</a>
+        <a href="Manual_CasasBahia_Koncili.pdf" class="btn-dl" download title="Baixar PDF">⬇</a>
+      </div>
+    </div>
+
+    <!-- Centauro -->
+    <div class="card" data-name="centauro">
+      <div class="card-logo-wrap" style="background:#EF4123;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-centauro.png" alt="Centauro"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>CT</div>'"/>
+      </div>
+      <h3>Centauro</h3>
+      <p>Crie o acesso de usuário no portal seller da Centauro com o e-mail fornecido pela Koncili.</p>
+      <ul class="card-steps">
+        <li>Acesse o portal seller Centauro</li>
+        <li>Crie o usuário com o e-mail Koncili</li>
+        <li>Configure as permissões necessárias</li>
+      </ul>
+      <div class="card-actions">
+        <span class="btn-em-breve">🕐 Em breve</span>
+      </div>
+    </div>
+
+    <!-- Colombo -->
+    <div class="card" data-name="colombo">
+      <div class="card-logo-wrap" style="background:#003087;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-colombo.png" alt="Colombo"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>CO</div>'"/>
+      </div>
+      <h3>Colombo</h3>
+      <p>Crie o acesso de usuário no portal seller da Colombo com o e-mail fornecido pela Koncili.</p>
+      <ul class="card-steps">
+        <li>Acesse o portal seller Colombo</li>
+        <li>Crie o usuário com o e-mail Koncili</li>
+        <li>Configure as permissões necessárias</li>
+      </ul>
+      <div class="card-actions">
+        <span class="btn-em-breve">🕐 Em breve</span>
+      </div>
+    </div>
+
+    <!-- Dafiti -->
+    <div class="card" data-name="dafiti">
+      <div class="card-logo-wrap" style="background:#1a1a1a;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-dafiti.png" alt="Dafiti"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>DF</div>'"/>
+      </div>
+      <h3>Dafiti</h3>
+      <p>Crie o acesso de usuário no portal seller da Dafiti com o e-mail fornecido pela Koncili.</p>
+      <ul class="card-steps">
+        <li>Acesse o portal seller Dafiti</li>
+        <li>Crie o usuário com o e-mail Koncili</li>
+        <li>Configure as permissões necessárias</li>
+      </ul>
+      <div class="card-actions">
+        <span class="btn-em-breve">🕐 Em breve</span>
+      </div>
+    </div>
+
+    <!-- E-Fácil -->
+    <div class="card" data-name="e-facil efacil">
+      <div class="card-logo-wrap" style="background:#0066CC;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-efacil.png" alt="E-Fácil"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>EF</div>'"/>
+      </div>
+      <h3>E-Fácil</h3>
+      <p>Crie o acesso de usuário no portal seller do E-Fácil com o e-mail fornecido pela Koncili.</p>
+      <ul class="card-steps">
+        <li>Acesse o portal seller E-Fácil</li>
+        <li>Crie o usuário com o e-mail Koncili</li>
+        <li>Configure as permissões necessárias</li>
+      </ul>
+      <div class="card-actions">
+        <span class="btn-em-breve">🕐 Em breve</span>
+      </div>
+    </div>
+
+    <!-- Falabella -->
+    <div class="card" data-name="falabella">
+      <div class="card-logo-wrap" style="background:#006B3E;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-falabella.png" alt="Falabella"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>FL</div>'"/>
+      </div>
+      <h3>Falabella</h3>
+      <p>Crie o acesso de usuário no portal seller da Falabella com o e-mail fornecido pela Koncili.</p>
+      <ul class="card-steps">
+        <li>Acesse o portal seller Falabella</li>
+        <li>Crie o usuário com o e-mail Koncili</li>
+        <li>Configure as permissões necessárias</li>
+      </ul>
+      <div class="card-actions">
+        <span class="btn-em-breve">🕐 Em breve</span>
+      </div>
+    </div>
+
+    <!-- iFood -->
+    <div class="card" data-name="ifood i food">
+      <div class="card-logo-wrap" style="background:#EA1D2C;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-ifood.png" alt="iFood"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>IF</div>'"/>
+      </div>
+      <h3>iFood</h3>
+      <p>Crie o acesso de usuário no portal seller do iFood com o e-mail fornecido pela Koncili.</p>
+      <ul class="card-steps">
+        <li>Acesse o portal seller iFood</li>
+        <li>Crie o usuário com o e-mail Koncili</li>
+        <li>Configure as permissões necessárias</li>
+      </ul>
+      <div class="card-actions">
+        <span class="btn-em-breve">🕐 Em breve</span>
+      </div>
+    </div>
+
+    <!-- Inter Shop -->
+    <div class="card" data-name="inter shop intershop">
+      <div class="card-logo-wrap" style="background:#FF7A00;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-intershop.png" alt="Inter Shop"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>IS</div>'"/>
+      </div>
+      <h3>Inter Shop</h3>
+      <p>Crie o acesso de usuário no portal seller do Inter Shop com o e-mail fornecido pela Koncili.</p>
+      <ul class="card-steps">
+        <li>Acesse o portal seller Inter Shop</li>
+        <li>Crie o usuário com o e-mail Koncili</li>
+        <li>Configure as permissões necessárias</li>
+      </ul>
+      <div class="card-actions">
+        <span class="btn-em-breve">🕐 Em breve</span>
       </div>
     </div>
 
@@ -381,6 +532,117 @@
       </div>
     </div>
 
+    <!-- Magazine Luiza -->
+    <div class="card" data-name="magazine luiza magalu magazineluiza">
+      <div class="card-logo-wrap" style="background:#0B6FAB;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-magalu.png" alt="Magazine Luiza"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>M</div>'"/>
+      </div>
+      <h3>Magazine Luiza</h3>
+      <p>Crie o usuário de acesso no portal seller do Magazine Luiza com o e-mail Koncili.</p>
+      <ul class="card-steps">
+        <li>Acesse o portal seller do Magalu</li>
+        <li>Crie o usuário com o e-mail Koncili</li>
+        <li>Valide as permissões configuradas</li>
+      </ul>
+      <div class="card-actions">
+        <a class="btn-ver" href="Manual_MagazineLuiza_Koncili.pdf" target="_blank">📄 Ver Manual</a>
+        <a href="Manual_MagazineLuiza_Koncili.pdf" class="btn-dl" download title="Baixar PDF">⬇</a>
+      </div>
+    </div>
+
+    <!-- Martins -->
+    <div class="card" data-name="martins">
+      <div class="card-logo-wrap" style="background:#F47920;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-martins.png" alt="Martins"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>MT</div>'"/>
+      </div>
+      <h3>Martins</h3>
+      <p>Crie o acesso de usuário no portal seller Martins com o e-mail fornecido pela Koncili.</p>
+      <ul class="card-steps">
+        <li>Acesse o portal seller Martins</li>
+        <li>Crie o usuário com o e-mail Koncili</li>
+        <li>Configure as permissões necessárias</li>
+      </ul>
+      <div class="card-actions">
+        <span class="btn-em-breve">🕐 Em breve</span>
+      </div>
+    </div>
+
+    <!-- Mercado Livre -->
+    <div class="card" data-name="mercado livre mercadolivre ml">
+      <div class="card-logo-wrap" style="background:#FFE600;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-mercado-livre.png" alt="Mercado Livre"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>ML</div>'"/>
+      </div>
+      <h3>Mercado Livre</h3>
+      <p>Adicione o colaborador Koncili no painel do Mercado Livre com as permissões corretas.</p>
+      <ul class="card-steps">
+        <li>Acesse o painel do Mercado Livre</li>
+        <li>Adicione o colaborador com o e-mail Koncili</li>
+        <li>Defina as permissões de acesso adequadas</li>
+      </ul>
+      <div class="card-actions">
+        <a class="btn-ver" href="Manual_MercadoLivre_Koncili.pdf" target="_blank">📄 Ver Manual</a>
+        <a href="Manual_MercadoLivre_Koncili.pdf" class="btn-dl" download title="Baixar PDF">⬇</a>
+      </div>
+    </div>
+
+    <!-- Mercado Pago -->
+    <div class="card" data-name="mercado pago mercadopago">
+      <div class="card-logo-wrap" style="background:#009EE3;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-mercadopago.png" alt="Mercado Pago"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>MP</div>'"/>
+      </div>
+      <h3>Mercado Pago</h3>
+      <p>Crie o acesso de usuário no portal Mercado Pago com o e-mail fornecido pela Koncili.</p>
+      <ul class="card-steps">
+        <li>Acesse o portal Mercado Pago</li>
+        <li>Crie o usuário com o e-mail Koncili</li>
+        <li>Configure as permissões necessárias</li>
+      </ul>
+      <div class="card-actions">
+        <span class="btn-em-breve">🕐 Em breve</span>
+      </div>
+    </div>
+
+    <!-- Netshoes -->
+    <div class="card" data-name="netshoes">
+      <div class="card-logo-wrap" style="background:#FF5A00;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-netshoes.png" alt="Netshoes"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>NS</div>'"/>
+      </div>
+      <h3>Netshoes</h3>
+      <p>Crie o acesso de usuário no portal seller da Netshoes com o e-mail fornecido pela Koncili.</p>
+      <ul class="card-steps">
+        <li>Acesse o portal seller Netshoes</li>
+        <li>Crie o usuário com o e-mail Koncili</li>
+        <li>Configure as permissões necessárias</li>
+      </ul>
+      <div class="card-actions">
+        <span class="btn-em-breve">🕐 Em breve</span>
+      </div>
+    </div>
+
+    <!-- Shopee -->
+    <div class="card" data-name="shopee">
+      <div class="card-logo-wrap" style="background:#EE4D2D;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-shopee.png" alt="Shopee"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>S</div>'"/>
+      </div>
+      <h3>Shopee</h3>
+      <p>Crie o sub-usuário no Shopee Seller Center com o e-mail e permissões indicados pela Koncili.</p>
+      <ul class="card-steps">
+        <li>Acesse o Shopee Seller Center</li>
+        <li>Adicione um sub-usuário com o e-mail Koncili</li>
+        <li>Configure as permissões necessárias</li>
+      </ul>
+      <div class="card-actions">
+        <a class="btn-ver" href="Manual_Shopee_Koncili.pdf" target="_blank">📄 Ver Manual</a>
+        <a href="Manual_Shopee_Koncili.pdf" class="btn-dl" download title="Baixar PDF">⬇</a>
+      </div>
+    </div>
+
     <!-- TikTok Shop -->
     <div class="card" data-name="tiktok shop tiktok">
       <div class="card-logo-wrap" style="background:#000000;border-radius:8px;padding:7px;">
@@ -400,60 +662,39 @@
       </div>
     </div>
 
-    <!-- Americanas -->
-    <div class="card" data-name="americanas">
-      <div class="card-logo-wrap" style="background:#CC0000;border-radius:8px;padding:7px;">
-        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-americanas.png" alt="Americanas"
-             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>AM</div>'"/>
+    <!-- WebContinental -->
+    <div class="card" data-name="webcontinental web continental">
+      <div class="card-logo-wrap" style="background:#003B8E;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-webcontinental.png" alt="WebContinental"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>WC</div>'"/>
       </div>
-      <h3>Americanas</h3>
-      <p>Configure o acesso de usuário no painel Americanas Marketplace com as permissões corretas.</p>
+      <h3>WebContinental</h3>
+      <p>Crie o acesso de usuário no portal seller da WebContinental com o e-mail fornecido pela Koncili.</p>
       <ul class="card-steps">
-        <li>Acesse o portal Americanas</li>
-        <li>Crie o usuário com permissão de acesso</li>
-        <li>Salve as credenciais geradas</li>
+        <li>Acesse o portal seller WebContinental</li>
+        <li>Crie o usuário com o e-mail Koncili</li>
+        <li>Configure as permissões necessárias</li>
       </ul>
       <div class="card-actions">
-        <a class="btn-ver" href="Manual_Americanas_Koncili.pdf" target="_blank">📄 Ver Manual</a>
-        <a href="Manual_Americanas_Koncili.pdf" class="btn-dl" download title="Baixar PDF">⬇</a>
+        <span class="btn-em-breve">🕐 Em breve</span>
       </div>
     </div>
 
-    <!-- Carrefour -->
-    <div class="card" data-name="carrefour">
-      <div class="card-logo-wrap" style="background:#003DA5;border-radius:8px;padding:7px;">
-        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-carrefour.png" alt="Carrefour"
-             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>CR</div>'"/>
+    <!-- Zoom -->
+    <div class="card" data-name="zoom">
+      <div class="card-logo-wrap" style="background:#FF6600;border-radius:8px;padding:7px;">
+        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-zoom.png" alt="Zoom"
+             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>ZM</div>'"/>
       </div>
-      <h3>Carrefour</h3>
-      <p>Crie o acesso de usuário no seller portal do Carrefour para operação integrada.</p>
+      <h3>Zoom</h3>
+      <p>Crie o acesso de usuário no portal seller do Zoom com o e-mail fornecido pela Koncili.</p>
       <ul class="card-steps">
-        <li>Acesse o seller portal Carrefour</li>
-        <li>Cadastre o usuário de integração</li>
-        <li>Defina as permissões de acesso</li>
+        <li>Acesse o portal seller Zoom</li>
+        <li>Crie o usuário com o e-mail Koncili</li>
+        <li>Configure as permissões necessárias</li>
       </ul>
       <div class="card-actions">
-        <a class="btn-ver" href="Manual_Carrefour_Koncili.pdf" target="_blank">📄 Ver Manual</a>
-        <a href="Manual_Carrefour_Koncili.pdf" class="btn-dl" download title="Baixar PDF">⬇</a>
-      </div>
-    </div>
-
-    <!-- Casas Bahia -->
-    <div class="card" data-name="casas bahia casasbahia">
-      <div class="card-logo-wrap" style="background:#006DCC;border-radius:8px;padding:7px;">
-        <img src="https://www.koncili.com/wp-content/uploads/2024/05/integ-casasbahia.png" alt="Casas Bahia"
-             onerror="this.parentElement.innerHTML='<div class=\'card-logo-placeholder\'>CB</div>'"/>
-      </div>
-      <h3>Casas Bahia</h3>
-      <p>Configure o usuário de integração no portal seller das Casas Bahia.</p>
-      <ul class="card-steps">
-        <li>Acesse o portal Casas Bahia</li>
-        <li>Crie o usuário com e-mail Koncili</li>
-        <li>Valide o acesso criado</li>
-      </ul>
-      <div class="card-actions">
-        <a class="btn-ver" href="Manual_CasasBahia_Koncili.pdf" target="_blank">📄 Ver Manual</a>
-        <a href="Manual_CasasBahia_Koncili.pdf" class="btn-dl" download title="Baixar PDF">⬇</a>
+        <span class="btn-em-breve">🕐 Em breve</span>
       </div>
     </div>
 
