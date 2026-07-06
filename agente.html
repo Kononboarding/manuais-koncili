@@ -112,18 +112,121 @@
     .config-notice a { color: #7a5700; font-weight: 700; }
 
     @media (max-width: 680px) { .sidebar { display: none; } .messages { padding: 14px; } }
+
+    /* Setup modal */
+    .setup-overlay { position: fixed; inset: 0; background: rgba(21,49,55,0.85); z-index: 999; display: flex; align-items: center; justify-content: center; }
+    .setup-overlay.hidden { display: none; }
+    .setup-box { background: white; border-radius: 16px; padding: 36px; max-width: 440px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+    .setup-box h2 { font-size: 18px; font-weight: 900; color: #153137; margin-bottom: 8px; }
+    .setup-box p { font-size: 13px; color: #787878; line-height: 1.6; margin-bottom: 20px; }
+    .setup-box input { width: 100%; border: 2px solid #e0e0e0; border-radius: 8px; padding: 12px 14px; font-family: 'Montserrat', sans-serif; font-size: 13px; outline: none; margin-bottom: 14px; transition: border-color .2s; }
+    .setup-box input:focus { border-color: #3aaa35; }
+    .setup-box button { width: 100%; background: #3aaa35; color: white; border: none; border-radius: 8px; padding: 14px; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 800; cursor: pointer; transition: background .2s; }
+    .setup-box button:hover { background: #2d8f29; }
+    .setup-error { font-size: 12px; color: #d32f2f; margin-bottom: 10px; display: none; }
   </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════════════════════
-  CONFIGURAÇÃO — defina a URL do backend antes do deploy
-  Exemplo: const BACKEND_URL = 'https://meu-bot.render.com';
-  Desenvolvimento local: const BACKEND_URL = 'http://localhost:3000';
-  ═══════════════════════════════════════════════════════════════════════════ -->
 <script>
-  const BACKEND_URL = ''; // ← cole aqui a URL do seu backend Node.js
+  let ANTHROPIC_API_KEY = localStorage.getItem('_koncili_ak') || '';
+  const SYSTEM_PROMPT = `Você é o assistente de suporte da Koncili, especialista em ajudar sellers a criar acessos nos marketplaces e integrar suas contas no portal Koncili. Você responde de forma simples, direta e amigável — os sellers podem não ter conhecimento técnico avançado.
+
+### Regras de comportamento
+- Responda APENAS com base nos manuais abaixo
+- Se o seller enviar uma imagem ou print: analise o que está visível, identifique a etapa e o erro, e oriente o próximo passo
+- Use listas numeradas para passos e **negrito** para campos importantes
+- Se o problema não estiver coberto, diga: "Entre em contato com seu analista de implantação"
+- Nunca invente informações que não estejam nos manuais
+
+---
+
+# Amazon
+1. Seller Central > Configurações > Permissões de Usuário > Convidar novo usuário
+2. Nome: Koncili, E-mail: e-mail do analista
+3. Liberar 51 permissões conforme lista
+4. Aguardar 5 minutos após liberação
+⚠️ A Koncili não fornece telefone nem documentos.
+
+# Americanas
+Passo 1 — Criar perfil: Segurança > Perfil de Acesso > Adicionar Perfil > Nome: Koncili > Permissões: Atendimento, Cadastro, Dashboard, Financeiro, Produtos, Relatórios, Vendas
+Passo 2 — Criar usuário: Segurança > Gestão de Usuário > Adicionar Usuário > Nome: Koncili > E-mail: fornecido pelo analista > Perfil: Koncili
+
+# Carrefour
+1. Configurações > Usuários > Criar usuário
+2. E-mail: @koncili.com (fornecido pelo analista)
+3. Funções: Gestão de pedidos + Contabilidade
+
+# Lojas Colombo
+1. Portal > Configurações > Usuários > Cadastrar
+2. Perfil: Seller Financeiro | Tipo: Financeiro
+3. E-mail: @koncili.com | Nome: [Nome da conta] - Koncili
+4. Telefone: telefone da empresa do seller
+
+# Dafiti
+1. Seller Center > Configurações > Gerenciar Usuários > Add User
+2. Role: Seller Full Access | E-mail: e-mail do analista | Nome: Koncili
+3. Idioma: Português | Marcar Ativo + Allow using password > Salvar
+
+# iFood
+1. Minha loja > Gestão de acessos > Criar acesso
+2. Perfil: Gestão Financeira (⚠️ NÃO usar Gestão Geral)
+3. Nome: KONCILI | E-mail: @koncili.com | Selecionar lojas > Salvar
+📧 E-mail de ativação enviado ao analista — ele precisa ativar.
+
+# Kabum / Leroy Merlin
+1. Configurações > Usuários > Criar usuário
+2. E-mail: @koncili.com | Funções: Gestão de pedidos + Contabilidade
+
+# Madeira Madeira
+1. Administração > Usuário > Adicionar Usuário
+2. Nome: Koncili | E-mail: @koncili.com | Nível: Administrador | Senha: Koncili2025
+
+# Magazine Luiza
+1. Menu > Configurações > Controle de Usuários > Novo usuário
+2. Nome: Koncili e Conciliação | Nível: Seller Financeiro | E-mail: e-mail do Boas-Vindas ou do analista
+
+# Mercado Livre
+1. Seu Negócio > Configurações > Colaboradores > Criar função: KONCILI
+2. Permissões ML: Gerenciar vendas, Baixar Excel, Ver horários envios, Consultar compras
+3. Permissões MP: Gerenciar reclamações, Ver saldo/transações, Ver relatórios, Métricas, Consultar operações
+4. Convidar colaborador com e-mail do Boas-Vindas
+⚠️ E-mail não deve estar cadastrado no ML/MP anteriormente.
+
+# Netshoes
+1. Gestão de Acesso > Cadastrar Usuário
+2. E-mail: analista | Nome: KONCILI | Tipo: Operação + Atendimento + Financeiro (⚠️ NÃO Gerencial) > Salvar
+
+# Shopee
+Parte 1 — Subconta: Logo > Config da Loja > Conta & Segurança > Gerenciamento de Subconta > Vincular > Usar conta principal > preencher dados > logar em subaccount.shopee.com > Minha Loja > Vincular loja > Autorizar
+Parte 2 — Membro Koncili: Membros > Criar novo > Nome: Koncili | ID: koncili | Senha: koncili2025 | Permissões: Administrador > Salvar > enviar conta+senha no WhatsApp
+
+# TikTok Shop
+1. TikTok Seller Center > Conta > Gestão de Membros > Convidar Membro
+2. E-mail: e-mail do analista | Função: Administrador > Enviar convite
+
+# Integração no Painel Koncili (Smart Reader)
+1. Menu lateral > Integrações
+2. Filtros Rápidos: pesquisar o canal
+3. Nova conta > informar nome > Salvar
+
+# Integração no Painel Koncili (Via API)
+1. Menu lateral > Integrações > pesquisar canal
+2. Nova conta > Nome da conta > Conta ativa > Data início importação
+3. Autenticar conta (botão verde) > Salvar
+⚠️ Alguns canais exigem token de acesso fornecido pelo marketplace.`;
 </script>
+
+<!-- Setup modal (só aparece se chave não estiver salva) -->
+<div class="setup-overlay" id="setupOverlay">
+  <div class="setup-box">
+    <h2>🔑 Configuração inicial</h2>
+    <p>Para ativar o assistente, cole a chave de API da Anthropic abaixo. Ela ficará salva apenas no seu navegador e não será compartilhada.</p>
+    <input type="password" id="keyInput" placeholder="sk-ant-api03-..." autocomplete="off"/>
+    <div class="setup-error" id="setupError">Chave inválida. Deve começar com sk-ant-</div>
+    <button onclick="saveKey()">Ativar Assistente</button>
+  </div>
+</div>
 
 <header>
   <a href="index.html" class="back-btn">← Voltar</a>
@@ -179,11 +282,6 @@
   </aside>
 
   <div class="chat-area">
-    <div class="config-notice" id="configNotice">
-      ⚙️ <strong>Backend não configurado.</strong> Defina <code>BACKEND_URL</code> no topo do arquivo para ativar o assistente.
-      &nbsp;<a href="https://console.anthropic.com" target="_blank">Obter chave de API →</a>
-    </div>
-
     <div class="messages" id="messages">
       <div class="msg bot" id="welcomeMsg">
         <div class="avatar">K</div>
@@ -210,8 +308,25 @@
 </div>
 
 <script>
+// ── Configuração da chave ────────────────────────────────────────────────────
+const setupOverlay = document.getElementById('setupOverlay');
+const keyInput = document.getElementById('keyInput');
+if (!ANTHROPIC_API_KEY) setupOverlay.classList.remove('hidden');
+else setupOverlay.classList.add('hidden');
+
+function saveKey() {
+  const val = keyInput.value.trim();
+  if (!val.startsWith('sk-ant-')) {
+    document.getElementById('setupError').style.display = 'block'; return;
+  }
+  ANTHROPIC_API_KEY = val;
+  localStorage.setItem('_koncili_ak', val);
+  setupOverlay.classList.add('hidden');
+}
+keyInput.addEventListener('keydown', e => { if (e.key === 'Enter') saveKey(); });
+
 // ── Estado ───────────────────────────────────────────────────────────────────
-let sessionId = null;
+let conversationHistory = [];
 let pendingImg = null; // { base64, mime }
 let busy = false;
 
@@ -221,9 +336,6 @@ const sendBtn  = document.getElementById('sendBtn');
 const imgInput = document.getElementById('imageInput');
 const attachBtn= document.getElementById('attachBtn');
 const imgThumb = document.getElementById('imgThumb');
-const notice   = document.getElementById('configNotice');
-
-if (!BACKEND_URL) notice.style.display = 'block';
 
 // ── Chips ────────────────────────────────────────────────────────────────────
 document.getElementById('chipGrid').addEventListener('click', e => {
@@ -283,16 +395,13 @@ function addMsg(role, text, imgSrc) {
   return inner;
 }
 
-function addFeedback(inner, logId) {
+function addFeedback(inner) {
   const row = document.createElement('div'); row.className = 'feedback-row';
   row.innerHTML = `<span class="feedback-label">💬 Isso resolveu?</span><button class="fb-btn yes" data-v="true">👍 Sim</button><button class="fb-btn no" data-v="false">👎 Não</button>`;
   inner.appendChild(row);
-  row.querySelectorAll('.fb-btn').forEach(btn => btn.addEventListener('click', async () => {
+  row.querySelectorAll('.fb-btn').forEach(btn => btn.addEventListener('click', () => {
     row.querySelectorAll('.fb-btn').forEach(b => { b.disabled=true; b.classList.remove('active'); });
     btn.classList.add('active');
-    if (BACKEND_URL && logId) {
-      try { await fetch(`${BACKEND_URL}/feedback`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ logId, confirmed: btn.dataset.v === 'true' }) }); } catch(_){}
-    }
   }));
 }
 
@@ -316,29 +425,54 @@ async function send() {
   pendingImg = null; imgThumb.style.display='none'; imgThumb.src='';
   attachBtn.classList.remove('has-img'); input.style.paddingRight='18px'; imgInput.value='';
 
-  if (!BACKEND_URL) {
-    addMsg('bot', '⚙️ **Backend não configurado.** Defina a variável `BACKEND_URL` no início do arquivo HTML com a URL do servidor.');
-    return;
-  }
-
   busy = true; sendBtn.disabled = true; showTyping();
 
+  // Monta conteúdo da mensagem do usuário
+  let userContent;
+  if (imgSnapshot) {
+    userContent = [
+      { type: 'image', source: { type: 'base64', media_type: imgSnapshot.mime, data: imgSnapshot.base64 } },
+      { type: 'text', text: text || 'O que está errado nessa tela?' }
+    ];
+  } else {
+    userContent = text;
+  }
+
+  conversationHistory.push({ role: 'user', content: userContent });
+
   try {
-    const body = { sessionId, message: text };
-    if (imgSnapshot) { body.imageBase64 = imgSnapshot.base64; body.imageMime = imgSnapshot.mime; }
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 1024,
+        system: SYSTEM_PROMPT,
+        messages: conversationHistory
+      })
+    });
 
-    const res  = await fetch(`${BACKEND_URL}/chat`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error?.message || 'HTTP ' + res.status);
+    }
+
     const data = await res.json();
+    const answer = data.content[0].text;
+    conversationHistory.push({ role: 'assistant', content: answer });
 
-    sessionId = data.sessionId;
     hideTyping();
-    const inner = addMsg('bot', data.answer);
-    addFeedback(inner, data.logId);
+    const inner = addMsg('bot', answer);
+    addFeedback(inner);
 
   } catch (err) {
     hideTyping();
-    addMsg('bot', '❌ Não consegui me conectar ao servidor. Verifique se o backend está rodando e tente novamente.');
+    addMsg('bot', '❌ Erro ao conectar com o assistente. Tente novamente em instantes.');
     console.error(err);
   } finally {
     busy = false; sendBtn.disabled = false; input.focus();
