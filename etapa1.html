@@ -1,227 +1,79 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Etapa 1 — Manuais de Acesso | Koncili</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Etapa 2 — Integração Koncili</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --green: #3aaa35;
-      --green-light: #74e635;
-      --navy: #153137;
-      --gray-dark: #3c3c3b;
-      --gray-mid: #787878;
-      --teal: #00b1b1;
-      --white: #ffffff;
-      --bg: #f5f5f5;
+      --green: #3aaa35; --green-light: #74e635; --navy: #153137;
+      --gray-dark: #3c3c3b; --gray-mid: #787878; --teal: #00b1b1;
+      --white: #ffffff; --bg: #f5f5f5;
+      --api-color: #6c63ff; --sr-color: #00b1b1;
     }
     body { transition: margin-right .3s cubic-bezier(.4,0,.2,1); font-family: 'Montserrat', sans-serif; background: var(--white); color: var(--gray-dark); }
-
-    header {
-      background: var(--white);
-      border-bottom: 3px solid var(--green);
-      padding: 16px 48px;
-      display: flex; align-items: center; gap: 16px;
-      position: sticky; top: 0; z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    .back-btn {
-      font-size: 12px; font-weight: 700; color: var(--gray-mid);
-      text-decoration: none; display: flex; align-items: center; gap: 6px;
-      text-transform: uppercase; letter-spacing: 1px;
-      transition: color 0.2s;
-    }
+    header { background: var(--white); border-bottom: 3px solid var(--green); padding: 16px 48px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .back-btn { font-size: 12px; font-weight: 700; color: var(--gray-mid); text-decoration: none; display: flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.2s; }
     .back-btn:hover { color: var(--green); }
     .divider { width: 1px; height: 24px; background: #e0e0e0; }
-    .logo svg { height: 28px; }
     .logo { text-decoration: none; }
+    .logo svg { height: 28px; }
     header nav { margin-left: auto; font-size: 11px; font-weight: 700; color: var(--gray-mid); letter-spacing: 1.5px; text-transform: uppercase; }
-
-    /* HERO */
-    .hero {
-      background: var(--navy);
-      padding: 16px 48px 14px;
-      position: relative; overflow: hidden;
-    }
-    .hero::after {
-      content: '';
-      position: absolute; right: -40px; top: -40px;
-      width: 220px; height: 220px;
-      border: 30px solid rgba(58,170,53,0.12);
-      border-radius: 50%;
-    }
-    .hero-badge {
-      display: inline-block;
-      background: var(--green); color: white;
-      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
-      text-transform: uppercase; padding: 4px 12px; border-radius: 4px;
-      margin-bottom: 8px;
-    }
-    .hero h2 { font-size: 32px; font-weight: 900; color: white; margin-bottom: 4px; }
+    .hero { background: var(--navy); padding: 16px 48px 14px; position: relative; overflow: hidden; }
+    .hero::after { content: ''; position: absolute; right: -40px; top: -40px; width: 220px; height: 220px; border: 30px solid rgba(58,170,53,0.12); border-radius: 50%; }
+    .hero-badge { display: inline-block; background: var(--teal); color: white; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 4px; margin-bottom: 8px; }
+    .hero h2 { font-size: 32px; font-weight: 900; color: white; margin-bottom: 10px; }
     .hero h2 span { color: var(--green-light); }
     .hero p { font-size: 14px; color: rgba(255,255,255,0.7); max-width: 520px; line-height: 1.6; }
-
-    main { max-width: 1400px; margin: 0 auto; padding: 40px 32px 100px; }
-
-    /* ALERT */
-    .alert {
-      background: #fff8e1; border-left: 4px solid #f9a825;
-      border-radius: 0 8px 8px 0;
-      padding: 16px 20px; margin-bottom: 36px;
-      display: flex; gap: 12px; align-items: flex-start;
-    }
-    .alert p { font-size: 13px; color: #5d4037; line-height: 1.6; }
-    .alert strong { color: #e65100; }
-
-    /* SEARCH */
-    .search-wrap { position: relative; margin-bottom: 36px; }
-    .search-wrap input {
-      width: 100%; padding: 14px 20px 14px 48px;
-      border: 2px solid #e8e8e8; border-radius: 8px;
-      font-family: 'Montserrat', sans-serif; font-size: 14px;
-      outline: none; transition: border-color 0.2s;
-    }
-    .search-wrap input:focus { border-color: var(--green); }
-    .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 18px; }
-
-    /* CARDS — estilo Koncili interno */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .card {
-      background: white;
-      border-radius: 12px; padding: 18px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-      display: flex; flex-direction: column; gap: 0;
-      transition: box-shadow 0.2s;
-    }
-    .card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.13); }
-    .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-    .card-logo-wrap {
-      width: 48px; height: 48px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 10px; overflow: hidden;
-    }
-    .card-logo-wrap img { width: 100%; height: 100%; object-fit: contain; }
-    .card-logo-placeholder {
-      width: 48px; height: 48px; background: #e8f7e8; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 14px; color: var(--green);
-    }
-    .card-info { flex: 1; min-width: 0; }
-    .card-info h3 { font-size: 16px; font-weight: 800; color: #1a1a1a; line-height: 1.2; }
-    .card-sub { font-size: 11px; color: #a0a0a0; font-weight: 500; }
-    .card-badge {
-      background: var(--green); color: white;
-      font-size: 9px; font-weight: 800; letter-spacing: 0.5px;
-      padding: 3px 8px; border-radius: 20px; flex-shrink: 0; align-self: flex-start;
-    }
-    .card-sep { border: none; border-top: 1px solid #f2f2f2; margin: 0 0 12px 0; }
-    .card-section-label, .card-stitle {
-      font-size: 12px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px;
-    }
-    .card-manual-section { margin-top: 10px; }
-    .card-steps { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-    .card-steps li { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #555; line-height: 1.4; }
-    .fi { font-size: 14px; flex-shrink: 0; width: 18px; text-align: center; }
-    .ft { flex: 1; }
-    .fok {
-      width: 20px; height: 20px; border-radius: 50%;
-      border: 1.5px solid var(--green); color: var(--green);
-      display: inline-flex; align-items: center; justify-content: center;
-      font-size: 11px; font-weight: 900; flex-shrink: 0;
-    }
-    .fna {
-      width: 20px; height: 20px; border-radius: 50%;
-      border: 1.5px solid #e57373; color: #e57373;
-      display: inline-flex; align-items: center; justify-content: center;
-      font-size: 11px; font-weight: 900; flex-shrink: 0;
-    }
-    .step-ok { display: none; }
-    .card-footer, .card-foot {
-      display: flex; align-items: center; justify-content: flex-end;
-      gap: 10px; margin-top: 14px; padding-top: 10px;
-      border-top: 1px solid #f2f2f2;
-    }
-    .card-arrow {
-      color: var(--green); font-size: 22px; font-weight: 900;
-      text-decoration: none; line-height: 1; transition: opacity 0.15s;
-    }
-    .card-arrow:hover { opacity: 0.7; }
-    .card-arrow.disabled { color: #ccc; cursor: default; pointer-events: none; }
-    .card-dl { color: #aaa; font-size: 15px; text-decoration: none; transition: color 0.15s; }
-    .card-dl:hover { color: var(--green); }
-    .btn-ver, .btn-dl, .btn-em-breve, .card-actions { display: none; }
-
-    /* MODAL */
-    .modal-overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(21,49,55,0.75); z-index: 1000;
-      align-items: center; justify-content: center;
-      padding: 20px;
-    }
-    .modal-overlay.open { display: flex; }
-    .modal {
-      background: white; border-radius: 14px;
-      width: 100%; max-width: 900px;
-      height: 90vh; display: flex; flex-direction: column;
-      overflow: hidden;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.3);
-    }
-    .modal-header {
-      background: var(--navy); color: white;
-      padding: 16px 24px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-shrink: 0;
-    }
-    .modal-header-left { display: flex; align-items: center; gap: 12px; }
-    .modal-logo-wrap { width: 40px; height: 28px; display: flex; align-items: center; }
-    .modal-logo-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; filter: brightness(0) invert(1); }
-    .modal-logo-placeholder {
-      background: var(--green); border-radius: 6px;
-      width: 40px; height: 28px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 800; color: white;
-    }
-    .modal-title { font-size: 15px; font-weight: 800; }
-    .modal-subtitle { font-size: 11px; opacity: 0.65; margin-top: 1px; }
-    .modal-actions { display: flex; align-items: center; gap: 10px; }
-    .modal-dl-btn {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: var(--green); color: white;
-      padding: 9px 18px; border-radius: 7px;
-      text-decoration: none; font-size: 12px; font-weight: 700;
-      transition: opacity 0.2s;
-    }
-    .modal-dl-btn:hover { opacity: 0.88; }
-    .modal-close {
-      background: rgba(255,255,255,0.12); border: none; cursor: pointer;
-      color: white; width: 34px; height: 34px; border-radius: 50%;
-      font-size: 18px; display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s;
-    }
-    .modal-close:hover { background: rgba(255,255,255,0.22); }
-    .modal-body { flex: 1; overflow: hidden; }
-    .modal-body iframe { width: 100%; height: 100%; border: none; display: block; }
-
-    .empty-state { text-align: center; padding: 60px; color: var(--gray-mid); display: none; }
-
-    .float-wa {
-      position: fixed; bottom: 28px; right: 28px;
-      background: #25d366; width: 56px; height: 56px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      text-decoration: none; box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-      transition: transform 0.2s; z-index: 999;
-    }
-
+    main { max-width: 1400px; margin: 0 auto; padding: 48px 48px 100px; }
+    .alert { background: #e0f7f7; border-left: 4px solid var(--teal); border-radius: 0 8px 8px 0; padding: 16px 20px; margin-bottom: 36px; display: flex; gap: 12px; align-items: flex-start; }
+    .alert p { font-size: 13px; color: #00796b; line-height: 1.6; }
+    .alert strong { color: #004d40; }
+    .access-card { border: 2px solid var(--green); border-radius: 12px; padding: 36px; margin-bottom: 48px; background: white; box-shadow: 0 4px 20px rgba(58,170,53,0.08); }
+    .access-card h3 { font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+    .access-field { margin-bottom: 18px; }
+    .access-field label { display: block; font-size: 11px; font-weight: 700; color: var(--gray-mid); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 7px; }
+    .field-box { background: var(--bg); border: 1px solid #e0e0e0; border-radius: 7px; padding: 13px 16px; font-size: 14px; font-weight: 600; color: var(--gray-dark); display: flex; align-items: center; }
+    .field-box.is-link { color: var(--teal); }
+    .field-placeholder { font-size: 13px; color: var(--gray-mid); font-weight: 400; font-style: italic; }
+    .access-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--green); color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 800; margin-top: 8px; transition: background 0.2s; }
+    .access-btn:hover { background: #2d8f29; }
+    @keyframes slideIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+    .doc-steps { padding: 20px 28px 28px; display: flex; flex-direction: column; gap: 20px; }
+    .doc-step { border: 1px solid #f0f0f0; border-radius: 10px; overflow: hidden; }
+    .doc-step-header { display: flex; align-items: center; gap: 14px; padding: 13px 18px; }
+    .doc-step-num { width: 28px; height: 28px; border-radius: 50%; color: white; font-size: 13px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .doc-step-title { font-size: 14px; font-weight: 800; color: #1a1a1a; }
+    .doc-step-body { padding: 14px 18px 18px; border-top: 1px solid #f5f5f5; }
+    .doc-step-desc { font-size: 13px; color: #444; line-height: 1.65; }
+    .doc-step-desc strong { color: #1a1a1a; }
+    .doc-warning { background: #fff8e1; border: 1px solid #ffe082; border-radius: 10px; padding: 14px 18px; display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: #7a5800; line-height: 1.6; }
     .float-ia { position: fixed; bottom: 96px; right: 28px; background: #153137; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 16px rgba(0,0,0,0.2); transition: transform 0.2s, background 0.2s; z-index: 999; font-size: 24px; }
     .float-ia:hover { transform: scale(1.1); background: #3aaa35; }
 
+    .manuais-title { font-size: 13px; font-weight: 800; color: #153137; text-transform: uppercase; letter-spacing: 1.5px; margin: 28px 0 14px; }
+    .manuais-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 28px; }
+    .manual-card { background: white; border: 1.5px solid #e8e8e8; border-radius: 14px; padding: 18px 16px 14px; display: flex; flex-direction: column; gap: 6px; transition: box-shadow .2s, border-color .2s, transform .2s; }
+    .manual-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.10); border-color: #c0c0c0; transform: translateY(-2px); }
+    .manual-card-badge { font-size: 8px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; padding: 2px 7px; border-radius: 20px; display: inline-block; width: fit-content; opacity: .85; }
+    .manual-card-badge.api { background: #f0eeff; color: #6c63ff; border: 1px solid #d4cfff; }
+    .manual-card-badge.mkt { background: #fff4e6; color: #e67e00; border: 1px solid #ffd49e; }
+    .manual-card-badge.sr { background: #e8f8f8; color: #00b1b1; border: 1px solid #b0e8e8; }
+    .manual-card-name { font-size: 16px; font-weight: 800; color: #153137; line-height: 1.2; flex: 1; margin-top: 2px; }
+    .manual-card-sub { font-size: 10px; color: #aaa; }
+    .manual-card-dl { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; text-decoration: none; padding: 6px 11px; border-radius: 7px; margin-top: 6px; transition: background .2s, color .2s; border: 1.5px solid #e53935; background: white; color: #e53935; }
+    .manual-card-dl:hover, .manual-card-dl.api:hover, .manual-card-dl.sr:hover { background: #e53935; color: white; }
+    .manual-card-dl.mkt { border-color: #e53935; color: #e53935; }
+    .manual-card-dl.api { border-color: #e53935; color: #e53935; }
+    .manual-card-dl.sr  { border-color: #e53935; color: #e53935; }
+    .manual-card-dl .pdf-icon { width: 14px; height: 14px; flex-shrink: 0; }
+    .manual-card-actions { display: flex; gap: 6px; margin-top: 6px; }
+    .manual-card-actions .manual-card-dl { margin-top: 0; flex: 1; justify-content: center; }
+    .manual-card-open { display: inline-flex; align-items: center; justify-content: center; gap: 5px; font-size: 11px; font-weight: 600; text-decoration: none; padding: 6px 11px; border-radius: 7px; flex: 1; border: 1.5px solid #153137; color: #153137; background: white; transition: background .2s, color .2s; }
+    .manual-card-open:hover { background: #153137; color: white; }
+    @media (max-width:600px) { header { padding: 12px 20px; } main { padding: 28px 16px 80px; } .hero { padding: 32px 20px; } .access-card { padding: 20px; } .doc-steps { padding: 12px; } }
   
     /* Chat Sidebar */
     .chat-sidebar { position: fixed; top: 0; right: -420px; width: 420px; height: 100vh; background: white; box-shadow: -4px 0 24px rgba(0,0,0,0.15); z-index: 1000; transition: right .3s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column; }
@@ -234,28 +86,51 @@
         </style>
 </head>
 <body>
+
+<script>
+const canais = [
+  {id:'amazon',name:'Amazon',type:'api'},{id:'americanas',name:'Americanas',type:'api'},
+  {id:'casas-bahia',name:'Casas Bahia',type:'api'},{id:'dafiti',name:'Dafiti',type:'api'},
+  {id:'ifood',name:'iFood',type:'api'},{id:'madeira',name:'Madeira Madeira',type:'api'},
+  {id:'magalu',name:'Magazine Luiza',type:'api'},{id:'mercado-livre',name:'Mercado Livre',type:'api'},
+  {id:'shopee',name:'Shopee',type:'api'},{id:'tiktok',name:'TikTok Shop',type:'api'},
+  {id:'angeloni',name:'Angeloni',type:'sr'},{id:'carrefour',name:'Carrefour',type:'sr'},
+  {id:'centauro',name:'Centauro',type:'sr'},{id:'colombo',name:'Colombo',type:'sr'},
+  {id:'efacil',name:'E-Fácil',type:'sr'},{id:'falabella',name:'Falabella',type:'sr'},
+  {id:'intershop',name:'Inter Shop',type:'sr'},{id:'kabum',name:'Kabum',type:'sr'},
+  {id:'leroy',name:'Leroy Merlin',type:'sr'},
+{id:'martins',name:'Martins',type:'sr'},
+{id:'netshoes',name:'Netshoes',type:'sr'}
+];
+</script>
+
 <header>
-<a class="back-btn" href="index.html">← Voltar</a>
-<div class="divider"></div>
-<a class="logo" href="index.html">
-<svg viewbox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
-<polygon fill="#3aaa35" points="0,20 10,8 14,12 6,20 14,28 10,32"></polygon>
-<polygon fill="#3aaa35" points="10,20 20,8 24,12 16,20 24,28 20,32"></polygon>
-<text fill="#3c3c3b" font-family="Montserrat,Arial,sans-serif" font-size="22" font-weight="800" letter-spacing="2" x="30" y="28">KONCILI</text>
-</svg>
-</a>
-<nav>Etapa 1 de 2</nav>
+  <a href="index.html" class="back-btn">&#x2190; Voltar</a>
+  <div class="divider"></div>
+  <a href="index.html" class="logo">
+    <svg viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,20 10,8 14,12 6,20 14,28 10,32" fill="#3aaa35"/>
+      <polygon points="10,20 20,8 24,12 16,20 24,28 20,32" fill="#3aaa35"/>
+      <text x="30" y="28" font-family="Montserrat,Arial,sans-serif" font-weight="800" font-size="22" fill="#3c3c3b" letter-spacing="2">KONCILI</text>
+    </svg>
+  </a>
+  <nav>Etapa 1 de 2</nav>
 </header>
+
 <div class="hero">
-<div class="hero-badge">1ª Etapa</div>
-<h2>Manuais de <span>Acesso</span></h2>
-<p>Baixe o manual do marketplace que você vai operar e siga o passo a passo para criar o acesso de usuário.</p>
+  <div class="hero-badge">1ª Etapa</div>
+  <h2>Manuais de <span>Acesso</span></h2>
+  <p>Baixe o manual do marketplace que você vai operar e siga o passo a passo para criar o acesso de usuário.</p>
 </div>
+  <h2>Integra&#xE7;&#xE3;o no <span>Painel Koncili</span></h2>
+  <p>Conecte seus canais ao painel Koncili. Busque o marketplace abaixo para ver o passo a passo com imagens.</p>
+</div>
+
 <main>
-<div class="alert">
-<span>⚠️</span>
-<p><strong>Importante:</strong> Utilize o <strong>e-mail fornecido pela Koncili</strong> para criar os acessos. Após criar o usuário em cada canal, avance para a <strong>Etapa 2</strong> para integrar as contas no painel.</p>
-</div>
+  <div class="alert">
+    <span>⚠️</span>
+    <p><strong>Importante:</strong> Utilize o <strong>e-mail fornecido pela Koncili</strong> para criar os acessos. Após criar o usuário em cada canal, avance para a <strong>Etapa 2</strong> para integrar as contas no painel.</p>
+  </div>
 
   <p class="manuais-title">&#x1F4C4; Manuais de criação de acesso</p>
   <div class="manuais-grid">
@@ -388,12 +263,13 @@
       </div>
     </div>
   </div>
-
 </main>
-<script>
-function filtrar(){const q=document.getElementById('searchInput').value.toLowerCase();let f=0;document.querySelectorAll('.card').forEach(c=>{const m=c.dataset.name.includes(q)||c.querySelector('h3').textContent.toLowerCase().includes(q);c.style.display=m?'':'none';if(m)f++;});document.getElementById('emptyState').style.display=f===0?'block':'none';}
-</script>
+
 <button class="float-ia" onclick="toggleChat()" title="Assistente IA Koncili">🤖</button>
+
+
+
+
 
 <div class="chat-sidebar" id="chatSidebar">
   <div class="chat-sidebar-header">
@@ -414,4 +290,5 @@ function filtrar(){const q=document.getElementById('searchInput').value.toLowerC
     document.body.style.marginRight = isOpen ? '' : '420px';
   }
 </script>
-</body></html>
+</body>
+</html>
