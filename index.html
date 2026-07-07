@@ -32,7 +32,7 @@
     header {
       background: var(--white);
       border-bottom: 3px solid var(--green);
-      padding: 18px 48px;
+      padding: 13px 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -58,7 +58,7 @@
       background: var(--navy);
       position: relative;
       overflow: hidden;
-      padding: 72px 48px 64px;
+      padding: 16px 48px 14px;
       display: flex;
       align-items: center;
       gap: 48px;
@@ -90,36 +90,36 @@
       font-size: 11px; font-weight: 700;
       letter-spacing: 1.5px; text-transform: uppercase;
       padding: 5px 14px; border-radius: 4px;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
     }
     .hero h1 {
       font-size: 42px; font-weight: 900;
       color: var(--white);
       line-height: 1.1;
-      margin-bottom: 16px;
+      margin-bottom: 6px;
     }
     .hero h1 span { color: var(--green-light); }
     .hero p {
       font-size: 15px; color: rgba(255,255,255,0.75);
-      line-height: 1.7; max-width: 480px;
+      line-height: 1.5; max-width: 480px; margin-top: 4px;
     }
 
     /* ── MAIN ── */
-    main { max-width: 1000px; margin: 0 auto; padding: 64px 32px 100px; }
+    main { max-width: 1400px; margin: 0 auto; padding: 36px 48px 60px; }
 
     /* ── ETAPA CARDS ── */
     .section-label {
       font-size: 11px; font-weight: 700;
       letter-spacing: 2px; text-transform: uppercase;
       color: var(--gray-mid);
-      margin-bottom: 24px;
+      margin-bottom: 14px;
     }
 
     .etapas-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 24px;
-      margin-bottom: 72px;
+      gap: 16px;
+      margin-bottom: 36px;
     }
     @media (max-width: 860px) { .etapas-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 560px) { .etapas-grid { grid-template-columns: 1fr; } }
@@ -128,11 +128,11 @@
       background: var(--white);
       border: 2px solid #e8e8e8;
       border-radius: 12px;
-      padding: 32px;
+      padding: 20px;
       text-decoration: none;
       color: inherit;
       transition: all 0.2s;
-      display: flex; flex-direction: column; gap: 14px;
+      display: flex; flex-direction: column; gap: 10px;
       position: relative; overflow: hidden;
     }
     .etapa-card::before {
@@ -164,8 +164,8 @@
       background: #fff8e1;
       border: 2px solid #f9a825;
       border-radius: 12px;
-      padding: 22px 28px;
-      margin-bottom: 40px;
+      padding: 16px 22px;
+      margin-bottom: 28px;
       display: flex;
       gap: 16px;
       align-items: flex-start;
@@ -206,7 +206,7 @@
     .timeline-wrap {
       background: var(--bg);
       border-radius: 16px;
-      padding: 48px;
+      padding: 28px;
       position: relative;
       overflow: hidden;
     }
@@ -261,7 +261,7 @@
 
     /* ── EQUIPE ── */
     .equipe-wrap {
-      margin-top: 56px;
+      margin-top: 28px;
     }
     .equipe-wrap h2 {
       font-size: 22px; font-weight: 800; color: var(--navy);
@@ -306,7 +306,7 @@
 
     /* ── HELP ── */
     .help-bar {
-      margin-top: 48px;
+      margin-top: 24px;
       background: var(--navy);
       border-radius: 12px;
       padding: 32px 40px;
@@ -428,7 +428,18 @@
       display: flex; align-items: flex-start; gap: 16px;
       flex: 1; min-width: 200px;
     }
-  </style>
+      .float-ia { position: fixed; bottom: 28px; right: 28px; width: 54px; height: 54px; border-radius: 50%; background: #153137; color: white; font-size: 22px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.2); z-index: 998; border: none; transition: transform .2s; }
+    .float-ia:hover { transform: scale(1.1); }
+    
+    body { transition: margin-right .3s cubic-bezier(.4,0,.2,1); }
+    .chat-sidebar { position: fixed; top: 0; right: -420px; width: 420px; height: 100vh; background: white; box-shadow: -4px 0 24px rgba(0,0,0,0.15); z-index: 1000; transition: right .3s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column; }
+    .chat-sidebar.open { right: 0; }
+    .chat-sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #153137; color: white; flex-shrink: 0; }
+    .chat-sidebar-title { font-size: 13px; font-weight: 700; letter-spacing: .5px; }
+    .chat-sidebar-close { background: rgba(255,255,255,0.15); border: none; color: white; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; transition: background .2s; }
+    .chat-sidebar-close:hover { background: rgba(255,255,255,0.3); }
+    .chat-sidebar iframe { flex: 1; border: none; width: 100%; }
+        </style>
 </head>
 <body>
 
@@ -450,7 +461,7 @@
 <div class="hero">
   <div class="hero-text">
     <div class="hero-badge">Onboarding de Sellers</div>
-    <h1>Bem-vindo à<br/><span>Koncili!</span></h1>
+    <h1>Bem-vindo à <span>Koncili!</span></h1>
     <p>Siga as etapas abaixo para configurar sua conta e começar a conciliação dos seus marketplaces.</p>
   </div>
 </div>
@@ -724,6 +735,25 @@ function selecionarPerfil(perfil) {
   // scroll suave para o conteúdo
   document.querySelector('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+</script>
+<button class="float-ia" onclick="toggleChat()" title="Assistente IA Koncili">🤖</button>
+
+<div class="chat-sidebar" id="chatSidebar">
+  <div class="chat-sidebar-header">
+    <span class="chat-sidebar-title">🤖 Assistente IA Koncili</span>
+    <button class="chat-sidebar-close" onclick="toggleChat()">✕</button>
+  </div>
+  <iframe id="chatFrame" src="" title="Assistente IA Koncili"></iframe>
+</div>
+<script>
+  function toggleChat() {
+    const sidebar = document.getElementById('chatSidebar');
+    const frame = document.getElementById('chatFrame');
+    const isOpen = sidebar.classList.contains('open');
+    if (!isOpen && !frame.src.includes('agente.html')) frame.src = 'agente.html';
+    sidebar.classList.toggle('open');
+    document.body.style.marginRight = isOpen ? '' : '420px';
+  }
 </script>
 </body>
 </html>

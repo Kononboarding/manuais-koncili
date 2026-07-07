@@ -18,7 +18,7 @@
       --white: #ffffff;
       --bg: #f5f5f5;
     }
-    body { font-family: 'Montserrat', sans-serif; background: var(--white); color: var(--gray-dark); }
+    body { transition: margin-right .3s cubic-bezier(.4,0,.2,1); font-family: 'Montserrat', sans-serif; background: var(--white); color: var(--gray-dark); }
 
     header {
       background: var(--white);
@@ -43,7 +43,7 @@
     /* HERO */
     .hero {
       background: var(--navy);
-      padding: 48px;
+      padding: 16px 48px 14px;
       position: relative; overflow: hidden;
     }
     .hero::after {
@@ -58,9 +58,9 @@
       background: var(--green); color: white;
       font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
       text-transform: uppercase; padding: 4px 12px; border-radius: 4px;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
     }
-    .hero h2 { font-size: 32px; font-weight: 900; color: white; margin-bottom: 10px; }
+    .hero h2 { font-size: 32px; font-weight: 900; color: white; margin-bottom: 4px; }
     .hero h2 span { color: var(--green-light); }
     .hero p { font-size: 14px; color: rgba(255,255,255,0.7); max-width: 520px; line-height: 1.6; }
 
@@ -90,7 +90,7 @@
     /* CARDS — estilo Koncili interno */
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
     .card {
@@ -222,7 +222,16 @@
     .float-ia { position: fixed; bottom: 96px; right: 28px; background: #153137; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 16px rgba(0,0,0,0.2); transition: transform 0.2s, background 0.2s; z-index: 999; font-size: 24px; }
     .float-ia:hover { transform: scale(1.1); background: #3aaa35; }
 
-  </style>
+  
+    /* Chat Sidebar */
+    .chat-sidebar { position: fixed; top: 0; right: -420px; width: 420px; height: 100vh; background: white; box-shadow: -4px 0 24px rgba(0,0,0,0.15); z-index: 1000; transition: right .3s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column; }
+    .chat-sidebar.open { right: 0; }
+    .chat-sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #153137; color: white; flex-shrink: 0; }
+    .chat-sidebar-title { font-size: 13px; font-weight: 700; letter-spacing: .5px; }
+    .chat-sidebar-close { background: rgba(255,255,255,0.15); border: none; color: white; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; transition: background .2s; }
+    .chat-sidebar-close:hover { background: rgba(255,255,255,0.3); }
+    .chat-sidebar iframe { flex: 1; border: none; width: 100%; }
+        </style>
 </head>
 <body>
 <header>
@@ -272,7 +281,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Acesso passo a passo</span><span class="fok">&#x2713;</span></li>
       <div class="card-footer"><a href="Manual_Americanas_Koncili.pdf" download class="card-dl">&#x2B07;</a><a href="Manual_Americanas_Koncili.pdf" target="_blank" class="card-arrow">&#x2192;</a></div>
-    </div>
+    </ul></div></div>
 <!-- Amazon -->
 <div class="card" data-name="amazon">
 <div class="card-header">
@@ -293,7 +302,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Acesso passo a passo</span><span class="fok">&#x2713;</span></li>
       <div class="card-footer"><a href="Manual_Amazon_Koncili.pdf" download class="card-dl">&#x2B07;</a><a href="Manual_Amazon_Koncili.pdf" target="_blank" class="card-arrow">&#x2192;</a></div>
-    </div>
+    </ul></div></div>
 <!-- Angeloni -->
 <div class="card" data-name="angeloni">
 <div class="card-header">
@@ -315,7 +324,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Em elaboracao</span><span class="fna">&#x2717;</span></li>
       <div class="card-footer"><span class="card-arrow disabled">&#x2192;</span></div>
-    </div>
+    </ul></div></div>
 <!-- Carrefour -->
 <div class="card" data-name="carrefour">
 <div class="card-header">
@@ -336,7 +345,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Acesso passo a passo</span><span class="fok">&#x2713;</span></li>
       <div class="card-footer"><a href="Manual_Carrefour_Koncili.pdf" download class="card-dl">&#x2B07;</a><a href="Manual_Carrefour_Koncili.pdf" target="_blank" class="card-arrow">&#x2192;</a></div>
-    </div>
+    </ul></div></div>
 <!-- Casas Bahia -->
 <div class="card" data-name="casas bahia casasbahia">
 <div class="card-header">
@@ -357,7 +366,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Acesso passo a passo</span><span class="fok">&#x2713;</span></li>
       <div class="card-footer"><a href="Manual_CasasBahia_Koncili.pdf" download class="card-dl">&#x2B07;</a><a href="Manual_CasasBahia_Koncili.pdf" target="_blank" class="card-arrow">&#x2192;</a></div>
-    </div>
+    </ul></div></div>
 <!-- Centauro -->
 <div class="card" data-name="centauro">
 <div class="card-header">
@@ -379,7 +388,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Em elaboracao</span><span class="fna">&#x2717;</span></li>
       <div class="card-footer"><span class="card-arrow disabled">&#x2192;</span></div>
-    </div>
+    </ul></div></div>
 <!-- Colombo -->
 <div class="card" data-name="colombo">
 <div class="card-header">
@@ -401,7 +410,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Em elaboracao</span><span class="fna">&#x2717;</span></li>
       <div class="card-footer"><span class="card-arrow disabled">&#x2192;</span></div>
-    </div>
+    </ul></div></div>
 <!-- Dafiti -->
 <div class="card" data-name="dafiti">
 <div class="card-header">
@@ -423,7 +432,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Em elaboracao</span><span class="fna">&#x2717;</span></li>
       <div class="card-footer"><span class="card-arrow disabled">&#x2192;</span></div>
-    </div>
+    </ul></div></div>
 <!-- E-Fácil -->
 <div class="card" data-name="e-facil efacil">
 <div class="card-header">
@@ -444,7 +453,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Em elaboracao</span><span class="fna">&#x2717;</span></li>
       <div class="card-footer"><span class="card-arrow disabled">&#x2192;</span></div>
-    </div>
+    </ul></div></div>
 <!-- Falabella -->
 <div class="card" data-name="falabella">
 <div class="card-header">
@@ -466,7 +475,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Em elaboracao</span><span class="fna">&#x2717;</span></li>
       <div class="card-footer"><span class="card-arrow disabled">&#x2192;</span></div>
-    </div>
+    </ul></div></div>
 <!-- iFood -->
 <div class="card" data-name="ifood i food">
 <div class="card-header">
@@ -488,7 +497,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Em elaboracao</span><span class="fna">&#x2717;</span></li>
       <div class="card-footer"><span class="card-arrow disabled">&#x2192;</span></div>
-    </div>
+    </ul></div></div>
 <!-- Inter Shop -->
 <div class="card" data-name="inter shop intershop">
 <div class="card-header">
@@ -510,7 +519,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Em elaboracao</span><span class="fna">&#x2717;</span></li>
       <div class="card-footer"><span class="card-arrow disabled">&#x2192;</span></div>
-    </div>
+    </ul></div></div>
 <!-- Kabum -->
 <div class="card" data-name="kabum">
 <div class="card-header">
@@ -531,7 +540,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Acesso passo a passo</span><span class="fok">&#x2713;</span></li>
       <div class="card-footer"><a href="Manual_Kabum_Koncili.pdf" download class="card-dl">&#x2B07;</a><a href="Manual_Kabum_Koncili.pdf" target="_blank" class="card-arrow">&#x2192;</a></div>
-    </div>
+    </ul></div></div>
 <!-- Leroy Merlin -->
 <div class="card" data-name="leroy merlin leroymerlin leroy">
 <div class="card-header">
@@ -552,7 +561,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Acesso passo a passo</span><span class="fok">&#x2713;</span></li>
       <div class="card-footer"><a href="Manual_LeroyMerlin_Koncili.pdf" download class="card-dl">&#x2B07;</a><a href="Manual_LeroyMerlin_Koncili.pdf" target="_blank" class="card-arrow">&#x2192;</a></div>
-    </div>
+    </ul></div></div>
 <!-- Madeira Madeira -->
 <div class="card" data-name="madeira madeira">
 <div class="card-header">
@@ -573,7 +582,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Acesso passo a passo</span><span class="fok">&#x2713;</span></li>
       <div class="card-footer"><a href="Manual_Madeira_Madeira_Koncili.pdf" download class="card-dl">&#x2B07;</a><a href="Manual_Madeira_Madeira_Koncili.pdf" target="_blank" class="card-arrow">&#x2192;</a></div>
-    </div>
+    </ul></div></div>
 <!-- Magazine Luiza -->
 <div class="card" data-name="magazine luiza magalu magazineluiza">
 <div class="card-header">
@@ -590,7 +599,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Acesso passo a passo</span><span class="fok">&#x2713;</span></li>
       <div class="card-footer"><a href="Manual_MagazineLuiza_Koncili.pdf" download class="card-dl">&#x2B07;</a><a href="Manual_MagazineLuiza_Koncili.pdf" target="_blank" class="card-arrow">&#x2192;</a></div>
-    </div>
+    </ul></div></div>
     <!-- Martins -->
     <div class="card" data-name="martins">
       <div class="card-header">
@@ -609,7 +618,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Em elaboracao</span><span class="fna">&#x2717;</span></li>
       <div class="card-footer"><span class="card-arrow disabled">&#x2192;</span></div>
-    </div>
+    </ul></div></div>
 
     <!-- Mercado Livre -->
     <div class="card" data-name="mercado livre mercadolivre ml">
@@ -628,7 +637,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Acesso passo a passo</span><span class="fok">&#x2713;</span></li>
       <div class="card-footer"><a href="Manual_MercadoLivre_Koncili.pdf" download class="card-dl">&#x2B07;</a><a href="Manual_MercadoLivre_Koncili.pdf" target="_blank" class="card-arrow">&#x2192;</a></div>
-    </div>
+    </ul></div></div>
 
     <!-- Mercado Pago -->
     <div class="card" data-name="mercado pago mercadopago">
@@ -648,7 +657,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Em elaboracao</span><span class="fna">&#x2717;</span></li>
       <div class="card-footer"><span class="card-arrow disabled">&#x2192;</span></div>
-    </div>
+    </ul></div></div>
 
     <!-- Netshoes -->
     <div class="card" data-name="netshoes">
@@ -668,7 +677,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Em elaboracao</span><span class="fna">&#x2717;</span></li>
       <div class="card-footer"><span class="card-arrow disabled">&#x2192;</span></div>
-    </div>
+    </ul></div></div>
 
     <!-- Shopee -->
     <div class="card" data-name="shopee">
@@ -687,7 +696,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Acesso passo a passo</span><span class="fok">&#x2713;</span></li>
       <div class="card-footer"><a href="Manual_Shopee_Koncili.pdf" download class="card-dl">&#x2B07;</a><a href="Manual_Shopee_Koncili.pdf" target="_blank" class="card-arrow">&#x2192;</a></div>
-    </div>
+    </ul></div></div>
 
     <!-- TikTok Shop -->
     <div class="card" data-name="tiktok shop tiktok">
@@ -707,7 +716,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Acesso passo a passo</span><span class="fok">&#x2713;</span></li>
       <div class="card-footer"><a href="Manual_TikTok_Koncili.pdf" download class="card-dl">&#x2B07;</a><a href="Manual_TikTok_Koncili.pdf" target="_blank" class="card-arrow">&#x2192;</a></div>
-    </div>
+    </ul></div></div>
 
     <!-- WebContinental -->
     <div class="card" data-name="webcontinental web continental">
@@ -727,7 +736,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Em elaboracao</span><span class="fna">&#x2717;</span></li>
       <div class="card-footer"><span class="card-arrow disabled">&#x2192;</span></div>
-    </div>
+    </ul></div></div>
 
     <!-- Zoom -->
     <div class="card" data-name="zoom">
@@ -746,7 +755,7 @@
       </ul>
       <div class="card-manual-section"><div class="card-stitle">Manual disponivel:</div><ul class="card-steps"><li><span class="fi">&#x1F4C4;</span><span class="ft">Em elaboracao</span><span class="fna">&#x2717;</span></li>
       <div class="card-footer"><span class="card-arrow disabled">&#x2192;</span></div>
-    </div>
+    </ul></div></div>
   </div>
   <div class="empty-state" id="emptyState">
     <p style="font-size:32px">&#x1F50D;</p>
@@ -756,5 +765,25 @@
 <script>
 function filtrar(){const q=document.getElementById('searchInput').value.toLowerCase();let f=0;document.querySelectorAll('.card').forEach(c=>{const m=c.dataset.name.includes(q)||c.querySelector('h3').textContent.toLowerCase().includes(q);c.style.display=m?'':'none';if(m)f++;});document.getElementById('emptyState').style.display=f===0?'block':'none';}
 </script>
-<a href="agente.html" class="float-ia" title="Assistente IA Koncili">🤖</a>
+<button class="float-ia" onclick="toggleChat()" title="Assistente IA Koncili">🤖</button>
+
+<div class="chat-sidebar" id="chatSidebar">
+  <div class="chat-sidebar-header">
+    <span class="chat-sidebar-title">🤖 Assistente IA Koncili</span>
+    <button class="chat-sidebar-close" onclick="toggleChat()">✕</button>
+  </div>
+  <iframe id="chatFrame" src="" title="Assistente IA Koncili"></iframe>
+</div>
+<script>
+  function toggleChat() {
+    const sidebar = document.getElementById('chatSidebar');
+    const frame = document.getElementById('chatFrame');
+    const isOpen = sidebar.classList.contains('open');
+    if (!isOpen && !frame.src.includes('agente.html')) {
+      frame.src = 'agente.html';
+    }
+    sidebar.classList.toggle('open');
+    document.body.style.marginRight = isOpen ? '' : '420px';
+  }
+</script>
 </body></html>
