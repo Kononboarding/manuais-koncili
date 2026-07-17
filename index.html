@@ -58,12 +58,12 @@
       background: var(--navy);
       position: relative;
       overflow: hidden;
-      padding: 80px 48px 120px;
+      padding: 60px 48px 60px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 56px;
+      gap: 36px;
       min-height: calc(100vh - 58px);
       text-align: center;
     }
@@ -114,7 +114,7 @@
     }
 
     /* ── MAIN ── */
-    main { max-width: 1400px; margin: 0 auto; padding: 36px 48px 60px; }
+    main { max-width: 1400px; margin: 0 auto; padding: 36px 48px 60px; opacity: 0; transition: opacity 0.4s ease; }
 
     /* ── ETAPA CARDS ── */
     .section-label {
@@ -546,11 +546,11 @@
 
 <!-- SELETOR DE PERFIL -->
 <div class="perfil-section">
-  <p class="perfil-label">Qual é o seu caso?</p>
+  <p class="perfil-label">Selecione uma opção abaixo:</p>
   <div class="perfil-grid">
 
-    <button class="perfil-card" onclick="window.open('etapa1.html', '_blank')">
-      <div class="perfil-card-icon"><img src="./images/icon-novo-seller.png" alt="Novo seller" /></div>
+    <button class="perfil-card" id="btn-novo" onclick="window.open('index.html?perfil=novo', '_blank')">
+      <div class="perfil-card-icon"><img src="/manuais-koncili/images/icon-novo-seller.png" alt="Novo seller" /></div>
       <div class="perfil-card-content">
         <strong>Sou novo seller Koncili</strong>
         <span>Estou começando agora e preciso passar por todas as etapas do onboarding.</span>
@@ -558,8 +558,8 @@
       <div class="perfil-card-arrow">→</div>
     </button>
 
-    <button class="perfil-card" onclick="window.open('etapa2.html', '_blank')">
-      <div class="perfil-card-icon"><img src="./images/icon-cliente.png" alt="Já sou cliente" /></div>
+    <button class="perfil-card" id="btn-cliente" onclick="window.open('index.html?perfil=cliente', '_blank')">
+      <div class="perfil-card-icon"><img src="/manuais-koncili/images/icon-cliente.png" alt="Já sou cliente" /></div>
       <div class="perfil-card-content">
         <strong>Já sou cliente Koncili</strong>
         <span>Preciso integrar uma ou mais contas de marketplace na plataforma.</span>
@@ -795,6 +795,15 @@
 </a>
 
 <script>
+// Auto-seleciona perfil via URL param (?perfil=novo ou ?perfil=cliente)
+window.addEventListener('DOMContentLoaded', function() {
+  var params = new URLSearchParams(window.location.search);
+  var perfil = params.get('perfil');
+  if (perfil === 'novo' || perfil === 'cliente') {
+    selecionarPerfil(perfil);
+  }
+});
+
 function selecionarPerfil(perfil) {
   // atualiza botões
   document.getElementById('btn-novo').classList.toggle('active', perfil === 'novo');
