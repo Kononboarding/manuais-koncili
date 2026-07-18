@@ -84,8 +84,8 @@
     .chat-sidebar-close:hover { background: rgba(255,255,255,0.3); }
     .chat-sidebar iframe { flex: 1; border: none; width: 100%; }
       
-    .mkt-logo-circle { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid #e8e8e8; overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #f8f8f8; }
-    .mkt-logo-circle img { width: 28px; height: 28px; object-fit: contain; }
+    .mkt-logo-circle { width: 40px; height: 40px; border-radius: 8px; border: 1px solid #ebebeb; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #f8f8f8; padding: 4px; }
+    .mkt-logo-circle img { max-width: 32px; max-height: 32px; width: auto; height: auto; object-fit: contain; }
     .manual-card-name-row { display: flex; align-items: center; gap: 10px; }
   </style>
 </head>
@@ -137,7 +137,7 @@ const canais = [
   <div class="manuais-grid">
     <div class="manual-card">
       <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="https://logo.clearbit.com/amazon.com.br" alt="Amazon" onerror="this.style.display='none'" /></div><div class="manual-card-name">Amazon</div></div>
+      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-amazon.png" alt="Amazon" onerror="this.style.display='none'" /></div><div class="manual-card-name">Amazon</div></div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-amazon.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-amazon.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
@@ -145,7 +145,7 @@ const canais = [
     </div>
     <div class="manual-card">
       <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="https://logo.clearbit.com/americanas.com.br" alt="Americanas" onerror="this.style.display='none'" /></div><div class="manual-card-name">Americanas</div></div>
+      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-americanas.png" alt="Americanas" onerror="this.style.display='none'" /></div><div class="manual-card-name">Americanas</div></div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-americanas.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-americanas.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
@@ -153,7 +153,7 @@ const canais = [
     </div>
     <div class="manual-card">
       <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="https://logo.clearbit.com/carrefour.com.br" alt="Carrefour" onerror="this.style.display='none'" /></div><div class="manual-card-name">Carrefour</div></div>
+      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-carrefour.png" alt="Carrefour" onerror="this.style.display='none'" /></div><div class="manual-card-name">Carrefour</div></div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-carrefour.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-carrefour.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
@@ -161,7 +161,7 @@ const canais = [
     </div>
     <div class="manual-card">
       <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="https://logo.clearbit.com/casasbahia.com.br" alt="Casas Bahia" onerror="this.style.display='none'" /></div><div class="manual-card-name">Casas Bahia</div></div>
+      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-casas-bahia.png" alt="Casas Bahia" onerror="this.style.display='none'" /></div><div class="manual-card-name">Casas Bahia</div></div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-casas-bahia.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-casas-bahia.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
@@ -169,7 +169,7 @@ const canais = [
     </div>
     <div class="manual-card">
       <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="https://logo.clearbit.com/colombo.com.br" alt="Colombo" onerror="this.style.display='none'" /></div><div class="manual-card-name">Colombo</div></div>
+      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-colombo.png" alt="Colombo" onerror="this.style.display='none'" /></div><div class="manual-card-name">Colombo</div></div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-colombo.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-colombo.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
@@ -177,7 +177,7 @@ const canais = [
     </div>
     <div class="manual-card">
       <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="https://logo.clearbit.com/dafiti.com.br" alt="Dafiti" onerror="this.style.display='none'" /></div><div class="manual-card-name">Dafiti</div></div>
+      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-dafiti.png" alt="Dafiti" onerror="this.style.display='none'" /></div><div class="manual-card-name">Dafiti</div></div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-dafiti.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-dafiti.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
@@ -185,7 +185,7 @@ const canais = [
     </div>
     <div class="manual-card">
       <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="https://logo.clearbit.com/ifood.com.br" alt="iFood" onerror="this.style.display='none'" /></div><div class="manual-card-name">iFood</div></div>
+      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-ifood.png" alt="iFood" onerror="this.style.display='none'" /></div><div class="manual-card-name">iFood</div></div>
       <div class="manual-card-actions">
         <a href="./pdfs/acessos-ifood.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acessos-ifood.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
@@ -193,7 +193,7 @@ const canais = [
     </div>
     <div class="manual-card">
       <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="https://logo.clearbit.com/efacil.com.br" alt="E-Fácil" onerror="this.style.display='none'" /></div><div class="manual-card-name">E-Fácil</div></div>
+      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-efacil.png" alt="E-Fácil" onerror="this.style.display='none'" /></div><div class="manual-card-name">E-Fácil</div></div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-efacil.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-efacil.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
@@ -201,7 +201,7 @@ const canais = [
     </div>
     <div class="manual-card">
       <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="https://logo.clearbit.com/kabum.com.br" alt="Kabum" onerror="this.style.display='none'" /></div><div class="manual-card-name">Kabum</div></div>
+      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-kabum.png" alt="Kabum" onerror="this.style.display='none'" /></div><div class="manual-card-name">Kabum</div></div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-kabum.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-kabum.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
@@ -209,7 +209,7 @@ const canais = [
     </div>
     <div class="manual-card">
       <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="https://logo.clearbit.com/leroymerlin.com.br" alt="Leroy Merlin" onerror="this.style.display='none'" /></div><div class="manual-card-name">Leroy Merlin</div></div>
+      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-leroy.png" alt="Leroy Merlin" onerror="this.style.display='none'" /></div><div class="manual-card-name">Leroy Merlin</div></div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-leroy-merlin.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-leroy-merlin.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
@@ -217,7 +217,7 @@ const canais = [
     </div>
     <div class="manual-card">
       <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="https://logo.clearbit.com/madeiramadeira.com.br" alt="Madeira Madeira" onerror="this.style.display='none'" /></div><div class="manual-card-name">Madeira Madeira</div></div>
+      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-madeira.png" alt="Madeira Madeira" onerror="this.style.display='none'" /></div><div class="manual-card-name">Madeira Madeira</div></div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-madeira-madeira.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-madeira-madeira.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
@@ -225,7 +225,7 @@ const canais = [
     </div>
     <div class="manual-card">
       <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="https://logo.clearbit.com/martins.com.br" alt="Martins" onerror="this.style.display='none'" /></div><div class="manual-card-name">Martins</div></div>
+      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-martins.png" alt="Martins" onerror="this.style.display='none'" /></div><div class="manual-card-name">Martins</div></div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-martins.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-martins.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
@@ -233,7 +233,7 @@ const canais = [
     </div>
     <div class="manual-card">
       <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="https://logo.clearbit.com/mercadolivre.com.br" alt="Mercado Livre" onerror="this.style.display='none'" /></div><div class="manual-card-name">Mercado Livre</div></div>
+      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-mercadolivre.png" alt="Mercado Livre" onerror="this.style.display='none'" /></div><div class="manual-card-name">Mercado Livre</div></div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-mercado-livre.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-mercado-livre.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
@@ -241,7 +241,7 @@ const canais = [
     </div>
     <div class="manual-card">
       <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="https://logo.clearbit.com/netshoes.com.br" alt="Netshoes" onerror="this.style.display='none'" /></div><div class="manual-card-name">Netshoes</div></div>
+      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-netshoes.png" alt="Netshoes" onerror="this.style.display='none'" /></div><div class="manual-card-name">Netshoes</div></div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-netshoes.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-netshoes.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
@@ -249,7 +249,7 @@ const canais = [
     </div>
     <div class="manual-card">
       <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="https://logo.clearbit.com/shopee.com.br" alt="Shopee" onerror="this.style.display='none'" /></div><div class="manual-card-name">Shopee</div></div>
+      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-shopee.png" alt="Shopee" onerror="this.style.display='none'" /></div><div class="manual-card-name">Shopee</div></div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-shopee.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-shopee.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
@@ -257,7 +257,7 @@ const canais = [
     </div>
     <div class="manual-card">
       <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="https://logo.clearbit.com/tiktok.com" alt="TikTok Shop" onerror="this.style.display='none'" /></div><div class="manual-card-name">TikTok Shop</div></div>
+      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-tiktok.png" alt="TikTok Shop" onerror="this.style.display='none'" /></div><div class="manual-card-name">TikTok Shop</div></div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-tiktok.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-tiktok.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
@@ -265,7 +265,7 @@ const canais = [
     </div>
     <div class="manual-card">
       <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="https://logo.clearbit.com/tiny.com.br" alt="Tiny" onerror="this.style.display='none'" /></div><div class="manual-card-name">Tiny</div></div>
+      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-tiny.png" alt="Tiny" onerror="this.style.display='none'" /></div><div class="manual-card-name">Tiny</div></div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-tiny.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-tiny.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
