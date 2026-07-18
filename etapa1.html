@@ -54,14 +54,14 @@
     .float-ia:hover { transform: scale(1.1); background: #3aaa35; }
 
     .manuais-title { font-size: 13px; font-weight: 800; color: #153137; text-transform: uppercase; letter-spacing: 1.5px; margin: 28px 0 14px; }
-    .manuais-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 28px; }
-    .manual-card { background: white; border: 1.5px solid #e8e8e8; border-radius: 14px; padding: 20px 12px 14px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; transition: box-shadow .2s, border-color .2s, transform .2s; }
-    .manual-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.10); border-color: #c0c0c0; transform: translateY(-2px); }
+    .manuais-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 28px; }
+    .manual-card { background: white; border: 1.5px solid #e8e8e8; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow .2s, border-color .2s; }
+    .manual-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.11); border-color: #3aaa35; }
     .manual-card-badge { display: none; }
     .manual-card-badge.api { background: #f0eeff; color: #6c63ff; border: 1px solid #d4cfff; }
     .manual-card-badge.mkt { background: #fff4e6; color: #e67e00; border: 1px solid #ffd49e; }
     .manual-card-badge.sr { background: #e8f8f8; color: #00b1b1; border: 1px solid #b0e8e8; }
-    .manual-card-name { font-size: 12px; font-weight: 500; color: #888; line-height: 1.3; text-align: center; }
+    .manual-card-name { font-size: 13px; font-weight: 600; color: #153137; text-align: center; padding: 10px 10px 0; line-height: 1.3; }
     .manual-card-sub { font-size: 10px; color: #aaa; }
     .manual-card-dl { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; text-decoration: none; padding: 6px 11px; border-radius: 7px; margin-top: 6px; transition: background .2s, color .2s; border: 1.5px solid #e53935; background: white; color: #e53935; }
     .manual-card-dl:hover, .manual-card-dl.api:hover, .manual-card-dl.sr:hover { background: #e53935; color: white; }
@@ -69,7 +69,7 @@
     .manual-card-dl.api { border-color: #e53935; color: #e53935; }
     .manual-card-dl.sr  { border-color: #e53935; color: #e53935; }
     .manual-card-dl .pdf-icon { width: 14px; height: 14px; flex-shrink: 0; }
-    .manual-card-actions { display: flex; gap: 6px; margin-top: 4px; width: 100%; }
+    .manual-card-actions { display: flex; gap: 5px; padding: 8px 10px 12px; margin-top: auto; }
     .manual-card-actions .manual-card-dl { margin-top: 0; flex: 1; justify-content: center; }
     .manual-card-open { display: inline-flex; align-items: center; justify-content: center; gap: 5px; font-size: 11px; font-weight: 600; text-decoration: none; padding: 6px 11px; border-radius: 7px; flex: 1; border: 1.5px solid #153137; color: #153137; background: white; transition: background .2s, color .2s; }
     .manual-card-open:hover { background: #153137; color: white; }
@@ -84,7 +84,7 @@
     .chat-sidebar-close:hover { background: rgba(255,255,255,0.3); }
     .chat-sidebar iframe { flex: 1; border: none; width: 100%; }
       
-    .mkt-logo-box { width: 100%; aspect-ratio: 1; border-radius: 10px; background: #f5f5f5; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 8%; }
+    .mkt-logo-box { width: 100%; height: 110px; background: #f7f7f7; border-bottom: 1px solid #ebebeb; display: flex; align-items: center; justify-content: center; padding: 14px; flex-shrink: 0; }
     .mkt-logo-box img { width: 100%; height: 100%; object-fit: contain; }
     
     .manual-card-name-row { display: flex; align-items: center; gap: 10px; }
