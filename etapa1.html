@@ -55,13 +55,13 @@
 
     .manuais-title { font-size: 13px; font-weight: 800; color: #153137; text-transform: uppercase; letter-spacing: 1.5px; margin: 28px 0 14px; }
     .manuais-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 28px; }
-    .manual-card { background: white; border: 1.5px solid #e8e8e8; border-radius: 14px; padding: 18px 16px 14px; display: flex; flex-direction: column; gap: 6px; transition: box-shadow .2s, border-color .2s, transform .2s; }
+    .manual-card { background: white; border: 1.5px solid #e8e8e8; border-radius: 14px; padding: 20px 12px 14px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; transition: box-shadow .2s, border-color .2s, transform .2s; }
     .manual-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.10); border-color: #c0c0c0; transform: translateY(-2px); }
-    .manual-card-badge { font-size: 8px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; padding: 2px 7px; border-radius: 20px; display: inline-block; width: fit-content; opacity: .85; }
+    .manual-card-badge { display: none; }
     .manual-card-badge.api { background: #f0eeff; color: #6c63ff; border: 1px solid #d4cfff; }
     .manual-card-badge.mkt { background: #fff4e6; color: #e67e00; border: 1px solid #ffd49e; }
     .manual-card-badge.sr { background: #e8f8f8; color: #00b1b1; border: 1px solid #b0e8e8; }
-    .manual-card-name { font-size: 16px; font-weight: 800; color: #153137; line-height: 1.2; flex: 1; margin-top: 2px; }
+    .manual-card-name { font-size: 12px; font-weight: 500; color: #888; line-height: 1.3; text-align: center; }
     .manual-card-sub { font-size: 10px; color: #aaa; }
     .manual-card-dl { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; text-decoration: none; padding: 6px 11px; border-radius: 7px; margin-top: 6px; transition: background .2s, color .2s; border: 1.5px solid #e53935; background: white; color: #e53935; }
     .manual-card-dl:hover, .manual-card-dl.api:hover, .manual-card-dl.sr:hover { background: #e53935; color: white; }
@@ -69,7 +69,7 @@
     .manual-card-dl.api { border-color: #e53935; color: #e53935; }
     .manual-card-dl.sr  { border-color: #e53935; color: #e53935; }
     .manual-card-dl .pdf-icon { width: 14px; height: 14px; flex-shrink: 0; }
-    .manual-card-actions { display: flex; gap: 6px; margin-top: 6px; }
+    .manual-card-actions { display: flex; gap: 6px; margin-top: 4px; width: 100%; }
     .manual-card-actions .manual-card-dl { margin-top: 0; flex: 1; justify-content: center; }
     .manual-card-open { display: inline-flex; align-items: center; justify-content: center; gap: 5px; font-size: 11px; font-weight: 600; text-decoration: none; padding: 6px 11px; border-radius: 7px; flex: 1; border: 1.5px solid #153137; color: #153137; background: white; transition: background .2s, color .2s; }
     .manual-card-open:hover { background: #153137; color: white; }
@@ -84,8 +84,8 @@
     .chat-sidebar-close:hover { background: rgba(255,255,255,0.3); }
     .chat-sidebar iframe { flex: 1; border: none; width: 100%; }
       
-    .mkt-logo-circle { width: 40px; height: 40px; border-radius: 8px; border: 1px solid #ebebeb; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #f8f8f8; padding: 4px; }
-    .mkt-logo-circle img { max-width: 32px; max-height: 32px; width: auto; height: auto; object-fit: contain; }
+    .mkt-logo-box { width: 72px; height: 72px; border-radius: 14px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; padding: 8px; }
+    .mkt-logo-box img { max-width: 56px; max-height: 56px; object-fit: contain; }
     .manual-card-name-row { display: flex; align-items: center; gap: 10px; }
   </style>
 </head>
@@ -136,136 +136,136 @@ const canais = [
   <p class="manuais-title">&#x1F4C4; Manuais de criação de acesso</p>
   <div class="manuais-grid">
     <div class="manual-card">
-      <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-amazon.png" alt="Amazon" onerror="this.style.display='none'" /></div><div class="manual-card-name">Amazon</div></div>
+      <div class="mkt-logo-box"><img src="/manuais-koncili/images/logo-amazon.png" alt="Amazon" onerror="this.style.display='none'" /></div>
+      <div class="manual-card-name">Amazon</div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-amazon.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-amazon.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
       </div>
     </div>
     <div class="manual-card">
-      <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-americanas.png" alt="Americanas" onerror="this.style.display='none'" /></div><div class="manual-card-name">Americanas</div></div>
+      <div class="mkt-logo-box"><img src="/manuais-koncili/images/logo-americanas.png" alt="Americanas" onerror="this.style.display='none'" /></div>
+      <div class="manual-card-name">Americanas</div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-americanas.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-americanas.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
       </div>
     </div>
     <div class="manual-card">
-      <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-carrefour.png" alt="Carrefour" onerror="this.style.display='none'" /></div><div class="manual-card-name">Carrefour</div></div>
+      <div class="mkt-logo-box"><img src="/manuais-koncili/images/logo-carrefour.png" alt="Carrefour" onerror="this.style.display='none'" /></div>
+      <div class="manual-card-name">Carrefour</div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-carrefour.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-carrefour.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
       </div>
     </div>
     <div class="manual-card">
-      <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-casas-bahia.png" alt="Casas Bahia" onerror="this.style.display='none'" /></div><div class="manual-card-name">Casas Bahia</div></div>
+      <div class="mkt-logo-box"><img src="/manuais-koncili/images/logo-casas-bahia.png" alt="Casas Bahia" onerror="this.style.display='none'" /></div>
+      <div class="manual-card-name">Casas Bahia</div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-casas-bahia.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-casas-bahia.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
       </div>
     </div>
     <div class="manual-card">
-      <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-colombo.png" alt="Colombo" onerror="this.style.display='none'" /></div><div class="manual-card-name">Colombo</div></div>
+      <div class="mkt-logo-box"><img src="/manuais-koncili/images/logo-colombo.png" alt="Colombo" onerror="this.style.display='none'" /></div>
+      <div class="manual-card-name">Colombo</div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-colombo.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-colombo.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
       </div>
     </div>
     <div class="manual-card">
-      <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-dafiti.png" alt="Dafiti" onerror="this.style.display='none'" /></div><div class="manual-card-name">Dafiti</div></div>
+      <div class="mkt-logo-box"><img src="/manuais-koncili/images/logo-dafiti.png" alt="Dafiti" onerror="this.style.display='none'" /></div>
+      <div class="manual-card-name">Dafiti</div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-dafiti.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-dafiti.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
       </div>
     </div>
     <div class="manual-card">
-      <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-ifood.png" alt="iFood" onerror="this.style.display='none'" /></div><div class="manual-card-name">iFood</div></div>
+      <div class="mkt-logo-box"><img src="/manuais-koncili/images/logo-ifood.png" alt="iFood" onerror="this.style.display='none'" /></div>
+      <div class="manual-card-name">iFood</div>
       <div class="manual-card-actions">
         <a href="./pdfs/acessos-ifood.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acessos-ifood.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
       </div>
     </div>
     <div class="manual-card">
-      <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-efacil.png" alt="E-Fácil" onerror="this.style.display='none'" /></div><div class="manual-card-name">E-Fácil</div></div>
+      <div class="mkt-logo-box"><img src="/manuais-koncili/images/logo-efacil.png" alt="E-Fácil" onerror="this.style.display='none'" /></div>
+      <div class="manual-card-name">E-Fácil</div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-efacil.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-efacil.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
       </div>
     </div>
     <div class="manual-card">
-      <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-kabum.png" alt="Kabum" onerror="this.style.display='none'" /></div><div class="manual-card-name">Kabum</div></div>
+      <div class="mkt-logo-box"><img src="/manuais-koncili/images/logo-kabum.png" alt="Kabum" onerror="this.style.display='none'" /></div>
+      <div class="manual-card-name">Kabum</div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-kabum.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-kabum.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
       </div>
     </div>
     <div class="manual-card">
-      <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-leroy.png" alt="Leroy Merlin" onerror="this.style.display='none'" /></div><div class="manual-card-name">Leroy Merlin</div></div>
+      <div class="mkt-logo-box"><img src="/manuais-koncili/images/logo-leroy.png" alt="Leroy Merlin" onerror="this.style.display='none'" /></div>
+      <div class="manual-card-name">Leroy Merlin</div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-leroy-merlin.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-leroy-merlin.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
       </div>
     </div>
     <div class="manual-card">
-      <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-madeira.png" alt="Madeira Madeira" onerror="this.style.display='none'" /></div><div class="manual-card-name">Madeira Madeira</div></div>
+      <div class="mkt-logo-box"><img src="/manuais-koncili/images/logo-madeira.png" alt="Madeira Madeira" onerror="this.style.display='none'" /></div>
+      <div class="manual-card-name">Madeira Madeira</div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-madeira-madeira.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-madeira-madeira.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
       </div>
     </div>
     <div class="manual-card">
-      <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-martins.png" alt="Martins" onerror="this.style.display='none'" /></div><div class="manual-card-name">Martins</div></div>
+      <div class="mkt-logo-box"><img src="/manuais-koncili/images/logo-martins.png" alt="Martins" onerror="this.style.display='none'" /></div>
+      <div class="manual-card-name">Martins</div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-martins.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-martins.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
       </div>
     </div>
     <div class="manual-card">
-      <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-mercadolivre.png" alt="Mercado Livre" onerror="this.style.display='none'" /></div><div class="manual-card-name">Mercado Livre</div></div>
+      <div class="mkt-logo-box"><img src="/manuais-koncili/images/logo-mercadolivre.png" alt="Mercado Livre" onerror="this.style.display='none'" /></div>
+      <div class="manual-card-name">Mercado Livre</div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-mercado-livre.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-mercado-livre.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
       </div>
     </div>
     <div class="manual-card">
-      <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-netshoes.png" alt="Netshoes" onerror="this.style.display='none'" /></div><div class="manual-card-name">Netshoes</div></div>
+      <div class="mkt-logo-box"><img src="/manuais-koncili/images/logo-netshoes.png" alt="Netshoes" onerror="this.style.display='none'" /></div>
+      <div class="manual-card-name">Netshoes</div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-netshoes.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-netshoes.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
       </div>
     </div>
     <div class="manual-card">
-      <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-shopee.png" alt="Shopee" onerror="this.style.display='none'" /></div><div class="manual-card-name">Shopee</div></div>
+      <div class="mkt-logo-box"><img src="/manuais-koncili/images/logo-shopee.png" alt="Shopee" onerror="this.style.display='none'" /></div>
+      <div class="manual-card-name">Shopee</div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-shopee.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-shopee.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
       </div>
     </div>
     <div class="manual-card">
-      <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-tiktok.png" alt="TikTok Shop" onerror="this.style.display='none'" /></div><div class="manual-card-name">TikTok Shop</div></div>
+      <div class="mkt-logo-box"><img src="/manuais-koncili/images/logo-tiktok.png" alt="TikTok Shop" onerror="this.style.display='none'" /></div>
+      <div class="manual-card-name">TikTok Shop</div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-tiktok.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-tiktok.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
       </div>
     </div>
     <div class="manual-card">
-      <span class="manual-card-badge mkt">Marketplace</span>
-      <div class="manual-card-name-row"><div class="mkt-logo-circle"><img src="/manuais-koncili/images/logo-tiny.png" alt="Tiny" onerror="this.style.display='none'" /></div><div class="manual-card-name">Tiny</div></div>
+      <div class="mkt-logo-box"><img src="/manuais-koncili/images/logo-tiny.png" alt="Tiny" onerror="this.style.display='none'" /></div>
+      <div class="manual-card-name">Tiny</div>
       <div class="manual-card-actions">
         <a href="./pdfs/acesso-tiny.pdf" download class="manual-card-dl mkt"><svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 15.5h-.8v1.8H7v-5h1.5c1 0 1.6.5 1.6 1.6 0 1-.6 1.6-1.6 1.6zm3.8 1.8h-1.4v-5h1.4c1.3 0 2.1.8 2.1 2.5s-.8 2.5-2.1 2.5zm4.7-3.6h-1.3v1h1.2v.7H16v1.9h-.7v-5H17v.7h-1.3v.7zm-7.2-.1h-.8v1.3h.8c.5 0 .9-.2.9-.7 0-.4-.3-.6-.9-.6zm3.2.1h-.7v3.6h.7c.9 0 1.4-.6 1.4-1.8s-.5-1.8-1.4-1.8z"/></svg>Baixar PDF</a>
         <a href="./pdfs/acesso-tiny.pdf" target="_blank" class="manual-card-open"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abrir</a>
