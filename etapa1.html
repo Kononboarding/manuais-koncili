@@ -86,6 +86,30 @@
     .mkt-logo-box img { width: 100%; height: 100%; object-fit: contain; }
     
     .manual-card-name-row { display: flex; align-items: center; gap: 10px; }
+
+    /* ═════ RESPONSIVIDADE ═════ */
+    header { padding-left: clamp(16px, 4vw, 48px); padding-right: clamp(16px, 4vw, 48px); flex-wrap: wrap; row-gap: 8px; }
+    .hero { padding-left: clamp(16px, 4vw, 48px); padding-right: clamp(16px, 4vw, 48px); }
+    .hero h2 { font-size: clamp(24px, 4vw, 32px); line-height: 1.2; }
+    main { padding-left: clamp(16px, 4vw, 48px); padding-right: clamp(16px, 4vw, 48px); }
+    .manual-card { min-width: 0; }
+    .manual-card-dl { min-width: 0; }
+    .chat-sidebar { width: min(420px, 100vw); right: calc(-1 * min(420px, 100vw)); }
+    .chat-sidebar.open { right: 0; }
+    @media (max-width: 600px) {
+      .manuais-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .mkt-logo-box { height: 84px; padding: 10px; }
+      .manual-card-name { font-size: 12.5px; min-height: 38px; padding: 10px 8px 6px; }
+      .manual-card-actions { padding: 0 8px 10px; gap: 5px; }
+      .manual-card-dl { font-size: 10.5px; padding: 7px 4px; }
+      .manual-card-open { padding: 7px 8px; }
+      header nav { font-size: 10px; letter-spacing: 1px; }
+      .divider { display: none; }
+      .alert { padding: 14px 14px; }
+    }
+    @media (max-width: 340px) {
+      .manuais-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -300,8 +324,8 @@ const canais = [
       frame.src = 'agente.html';
     }
     sidebar.classList.toggle('open');
-    document.body.style.marginRight = isOpen ? '' : '420px';
+    document.body.style.marginRight = (isOpen || window.innerWidth < 900) ? '' : '420px';
   }
 </script>
 </body>
-</html>                                                                                                                                                                                           
+</html>
