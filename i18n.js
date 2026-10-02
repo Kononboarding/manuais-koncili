@@ -109,8 +109,17 @@
     set('.hero p', 'Descargue el manual del marketplace que va a operar y siga el paso a paso para crear el usuario de acceso.');
     set('.alert p', '<strong>Importante:</strong> Utilice el <strong>correo proporcionado por Koncili</strong> para crear los accesos. Realice esta etapa después de integrar las cuentas en el panel en la <a href="etapa2.html?lang=es" style="color:inherit;font-weight:800;">Etapa 1</a>.');
     set('.manuais-title', '&#x1F4C4; Manuales de creación de acceso');
+    (function () { // card Falabella (só existe em ES)
+      var base = document.querySelector('.manual-card'); if (!base) return;
+      var c = base.cloneNode(true);
+      c.querySelector('.manual-card-name').textContent = 'Falabella';
+      var img = c.querySelector('.mkt-logo-box img');
+      if (img) { img.style.display = ''; img.setAttribute('src', '/manuais-koncili/images/logo-falabella.svg'); }
+      base.parentNode.appendChild(c);
+    })();
     cards({
       'Mercado Livre': ['Mercado Libre', './pdfs/es/acceso-mercado-libre.pdf'],
+      'Falabella': ['Falabella', './pdfs/es/acceso-falabella.pdf'],
       'Amazon': ['Amazon', './pdfs/es/acceso-amazon.pdf']
     }, 'Mostrando solo los canales con manual en español.');
   }
