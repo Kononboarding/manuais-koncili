@@ -33,7 +33,7 @@
   }
   // ---------- versão dos PDFs (evita cache antigo no navegador)
   // Atualize PDF_V sempre que algum manual for alterado.
-  var PDF_V = '20261002-2';
+  var PDF_V = '20261002-3';
   function addVer() {
     document.querySelectorAll('a[href*=".pdf"]').forEach(function (a) {
       var h = a.getAttribute('href').split('?')[0];
