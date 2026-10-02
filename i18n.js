@@ -31,7 +31,16 @@
     var nav = header.querySelector('nav');
     header.insertBefore(sw, nav || null);
   }
-  if (lang !== 'es') return;
+  // ---------- versão dos PDFs (evita cache antigo no navegador)
+  // Atualize PDF_V sempre que algum manual for alterado.
+  var PDF_V = '20261002';
+  function addVer() {
+    document.querySelectorAll('a[href*=".pdf"]').forEach(function (a) {
+      var h = a.getAttribute('href').split('?')[0];
+      a.setAttribute('href', h + '?v=' + PDF_V);
+    });
+  }
+  if (lang !== 'es') { addVer(); return; }
   document.documentElement.lang = 'es';
 
   function $(s) { return document.querySelector(s); }
@@ -123,4 +132,5 @@
       'Amazon': ['Amazon', './pdfs/es/acceso-amazon.pdf']
     }, 'Mostrando solo los canales con manual en español.');
   }
+  addVer();
 })();
