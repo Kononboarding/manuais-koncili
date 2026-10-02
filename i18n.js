@@ -32,8 +32,8 @@
     header.insertBefore(sw, nav || null);
   }
   // ---------- versão dos PDFs (evita cache antigo no navegador)
-  // Atualize PDF_V sempre que algum manual for alterado.
-  var PDF_V = '20261002-3';
+  // Muda automaticamente a cada 10 min: o navegador nunca usa um PDF guardado por mais tempo que isso.
+  var PDF_V = String(Math.floor(Date.now() / 600000));
   function addVer() {
     document.querySelectorAll('a[href*=".pdf"]').forEach(function (a) {
       var h = a.getAttribute('href').split('?')[0];
