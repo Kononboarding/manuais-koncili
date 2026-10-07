@@ -97,8 +97,10 @@
       (last ? '' : '<button class="kg-btn kg-sec" data-a="skip">' + T.skip + '</button>') +
       '<button class="kg-btn kg-pri" data-a="' + (last ? 'done' : 'next') + '">' + (last ? T.done + ' ✓' : T.next + ' →') + '</button></div>';
     box.querySelector('.kg-pri').focus();
-    s.el.scrollIntoView({ block: 'center', behavior: 'smooth' });
-    setTimeout(place, 350); place();
+    // rola a página para sobrar espaço acima do card (a mensagem fica sempre em cima)
+    var need = box.offsetHeight + 78 + 8 + 16, r0 = s.el.getBoundingClientRect();
+    if (r0.top < need || r0.bottom > innerHeight - 16) window.scrollTo({ top: Math.max(0, scrollY + r0.top - need), behavior: 'smooth' });
+    setTimeout(place, 400); place();
     window.addEventListener('resize', place); window.addEventListener('scroll', place);
   }
   function place() {
@@ -106,10 +108,10 @@
     var r = steps[idx].el.getBoundingClientRect(), pad = 8, vw = innerWidth, vh = innerHeight;
     hole.style.cssText = 'left:' + (r.left - pad) + 'px;top:' + (r.top - pad) + 'px;width:' + (r.width + 2 * pad) + 'px;height:' + (r.height + 2 * pad) + 'px';
     var bw = box.offsetWidth, bh = box.offsetHeight, gap = 78;
-    var below = r.bottom + gap + bh < vh || r.top - gap - bh < 0;
+    var below = false; // mensagem sempre acima do card
     var cx = r.left + r.width / 2;
     var left = Math.max(16, Math.min(vw - bw - 16, cx - bw / 2));
-    var top = below ? r.bottom + pad + gap : r.top - pad - gap - bh;
+    var top = Math.max(8, r.top - pad - gap - bh);
     box.style.left = left + 'px'; box.style.top = top + 'px';
     // seta entre a caixa e o card, apontando para o card
     arrow.className = 'kg-arrow ' + (below ? 'up' : 'down');
